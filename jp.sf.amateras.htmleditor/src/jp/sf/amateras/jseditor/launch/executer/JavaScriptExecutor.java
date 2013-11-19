@@ -2,8 +2,8 @@ package jp.sf.amateras.jseditor.launch.executer;
 import java.io.File;
 import java.io.FileReader;
 
-import jp.sf.amateras.jseditor.rhino.javascript.Context;
-import jp.sf.amateras.jseditor.rhino.javascript.Scriptable;
+import org.mozilla.javascript.Context;
+import org.mozilla.javascript.Scriptable;
 
 /**
  *
