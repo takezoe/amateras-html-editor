@@ -77,7 +77,7 @@ public class FoldingInfo {
 	
 	public static void applyModifiedAnnotations(ProjectionAnnotationModel model, List<FoldingInfo> list){
 		// apply only modified annotations
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings("rawtypes")
 		Iterator ite = model.getAnnotationIterator();
 		while(ite.hasNext()){
 			ProjectionAnnotation annotation = (ProjectionAnnotation)ite.next();

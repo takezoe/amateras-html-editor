@@ -143,7 +143,7 @@ public class HTMLEditor extends EditorPart implements IPaletteTarget {
 //	public boolean equals(Object arg0) {
 //		return editor.equals(arg0);
 //	}
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Object getAdapter(Class adapter) {
 		return editor.getAdapter(adapter);
 	}

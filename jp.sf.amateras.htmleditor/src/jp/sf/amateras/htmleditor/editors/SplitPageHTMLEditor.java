@@ -1,8 +1,5 @@
 package jp.sf.amateras.htmleditor.editors;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import jp.sf.amateras.htmleditor.HTMLPlugin;
 
 import org.eclipse.core.resources.IFile;
@@ -32,7 +29,6 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
-import org.eclipse.ui.internal.PopupMenuExtender;
 import org.eclipse.ui.part.EditorPart;
 
 /** The split style HTML editor. */
@@ -173,7 +169,7 @@ public class SplitPageHTMLEditor extends EditorPart implements IResourceChangeLi
 		return editor.isFileEditorInput();
 	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override public Object getAdapter(Class adapter) {
 		return editor.getAdapter(adapter);
 	}
@@ -190,7 +186,7 @@ public class SplitPageHTMLEditor extends EditorPart implements IResourceChangeLi
 		
 		private HTMLSourceEditor editor;
 		private IEditorSite site;
-		private List<PopupMenuExtender> menuExtenders;
+//		private List<PopupMenuExtender> menuExtenders;
 
 		
 		public SplitEditorSite(HTMLSourceEditor editor, IEditorSite site){
@@ -228,10 +224,10 @@ public class SplitPageHTMLEditor extends EditorPart implements IResourceChangeLi
 		}
 		
 		public void registerContextMenu(String menuId, MenuManager menuManager, ISelectionProvider selectionProvider) {
-			if (menuExtenders == null) {
-				menuExtenders = new ArrayList<PopupMenuExtender>(1);
-			}
-			menuExtenders.add(new PopupMenuExtender(menuId, menuManager, selectionProvider, editor));
+//			if (menuExtenders == null) {
+//				menuExtenders = new ArrayList<PopupMenuExtender>(1);
+//			}
+//			menuExtenders.add(new PopupMenuExtender(menuId, menuManager, selectionProvider, editor));
 		}
 		
 		public IWorkbenchPage getPage() {
@@ -254,18 +250,18 @@ public class SplitPageHTMLEditor extends EditorPart implements IResourceChangeLi
 			site.setSelectionProvider(provider);
 		}
 		
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings("rawtypes")
 		public Object getAdapter(Class adapter) {
 			return site.getAdapter(adapter);
 		}
 		
 		public void dispose() {
-			if (menuExtenders != null) {
-				for (int i = 0; i < menuExtenders.size(); i++) {
-					((PopupMenuExtender)menuExtenders.get(i)).dispose();
-				}
-				menuExtenders = null;
-			}
+//			if (menuExtenders != null) {
+//				for (int i = 0; i < menuExtenders.size(); i++) {
+//					((PopupMenuExtender)menuExtenders.get(i)).dispose();
+//				}
+//				menuExtenders = null;
+//			}
 		}
 		
 		// for Eclipse 3.1
@@ -284,12 +280,12 @@ public class SplitPageHTMLEditor extends EditorPart implements IResourceChangeLi
 		
 		// for Eclipse 3.2
 		
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings("rawtypes")
 		public Object getService(Class api) {
 			return null;
 		}
 
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings("rawtypes")
 		public boolean hasService(Class api) {
 			return false;
 		}

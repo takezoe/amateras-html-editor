@@ -456,7 +456,7 @@ public class HTMLSourceEditor extends TextEditor {
 	    setAction(ACTION_COMPLETION, action);
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override public Object getAdapter(Class adapter) {
 		if(IContentOutlinePage.class.equals(adapter)){
 			return outlinePage;

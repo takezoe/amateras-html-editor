@@ -82,7 +82,7 @@ public class MultiPageHTMLEditor extends MultiPageEditorPart implements IResourc
 	}
 	
 	public void dispose() {
-		// ƒeƒ“ƒ|ƒ‰ƒŠƒtƒ@ƒCƒ‹‚ª‚ ‚Á‚½‚çíœ‚·‚é
+		// ï¿½eï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½íœï¿½ï¿½ï¿½ï¿½
 		if(isFileEditorInput()){
 			File tmpFile = editor.getTempFile();
 			if(tmpFile.exists()){
@@ -153,7 +153,7 @@ public class MultiPageHTMLEditor extends MultiPageEditorPart implements IResourc
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Object getAdapter(Class adapter) {
 		return editor.getAdapter(adapter);
 	}
