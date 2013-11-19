@@ -1,0 +1,203 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="../book.css">
+  <title>EclipseHTMLEditor User Guide</title>
+</head>
+<body>
+<h1>Preferences</h1>
+<p>
+  Once installed, EclipseHTMLEditor adds workspace preference pages and 
+  project property page to Eclipse workbench. 
+</p>
+<ul>
+  <li>Preferences
+    <ul>
+      <li><a href="#ColorsAndLayout">Colors &amp; Layout</a></li>
+      <li><a href="#CodeAssist">Code Assist</a></li>
+      <li><a href="#CSSEditor">CSS Editor</a></li>
+      <li><a href="#DTDXSD">DTD / XSD</a></li>
+      <li><a href="#JavaScriptEditor">JavaScript Editor</a></li>
+      <li><a href="#JSPEditor">JSP Editor</a></li>
+      <li><a href="#TaskTags">Task Tags</a></li>
+      <li><a href="#TLD">TLD</a></li>
+      <li><a href="#XML">XML</a></li>
+    </ul>
+  </li>
+  <li>Project Properties
+    <ul>
+      <li><a href="#ProjectConfiguration">Project Configuration</a></li>
+      <li><a href="#JavaScript">JavaScript</a></li>
+    </ul>
+  </li>
+</ul>
+
+<!-- =================================================== -->
+<!-- Preferences -->
+<!-- =================================================== -->
+<h2>Preferences</h2>
+<h3><a name="ColorsAndLayout">Colors &amp; Layout</a></h3>
+<p>
+  <img src="preference.png" alt="Amateras Preference Pages"/>
+</p>
+<p>
+  This figure shows IDE artifacts added to the Preferences dialog. 
+  The color preferences on this main preferences page should be self-explanatory. 
+  This page has following options:
+</p>
+<table border="1">
+<tr>
+  <th>Option</th>
+  <th>Description</th>
+</tr>
+<tr>
+  <td>Highlight paired character</td>
+  <td>
+    When this option is checked, editors highlights bracket which corresponds to 
+    a character on the caret position.  
+  </td>
+</tr>
+<tr>
+  <td>Use soft tab</td>
+  <td>
+    When this option is checked, editors put space of specified number by 
+    <strong>Soft tab width</strong> instead of tab charactor. 
+  </td>
+</tr>
+<tr>
+  <td>Show XML Errors</td>
+  <td>
+  </td>
+</tr>
+<tr>
+  <td>Enable auto insertion</td>
+  <td>
+  </td>
+</tr>
+<tr>
+  <td>Editor Type</td>
+  <td>
+    The <strong>Editor Type</strong> preferences control whether, while editing an HTML or JSP page, 
+    the source and preview panes are displayed as tabs, as split panes, or don't display.   </td>
+</tr>
+</table>
+
+<h3><a name="CodeAssist">Code Assist</a></h3>
+<p>
+  <img src="code_assist.png" alt="Code Assist"/>
+</p>
+<p>
+  <strong>Code Assist</strong> preferences allow you to control some aspects of code completion.
+  It has sub preference pages <strong>Custom Assist</strong> and <strong>Template</strong>.
+</p>
+<dl>
+  <dt>Custom Assist</dt>
+  <dd>
+    Define custom elements and attributes for code completion.
+    For example, When <strong>wicket:id</strong> is defined as custom attribute,
+    the HTML editor displays it in code completion proposals.
+  </dd>
+  <dt>Template</dt>
+  <dd>
+    Define code template which can be used in code completion.
+    You can define code snippets and template name in this page.
+    Defined templates are displayed in the code completion poposals.
+  </dd>
+</dl>
+
+<h3><a name="CSSEditor">CSS Editor</a></h3>
+<p>
+  <img src="css_editor.png" alt="CSS Editor"/>
+</p>
+<p>
+  <strong>CSS Editor</strong> preferences allow to you to configure the CSS editor colors. 
+</p>
+
+<h3><a name="DTDXSD">DTD / XML Schema</a></h3>
+<p>
+  <img src="dtd.png" alt="DTD / XML"/>
+</p>
+<p>
+  <strong>DTD</strong> preferences allow you to manage the DTDs with which you work. 
+</p>
+<p>
+  Usually when an XML document with a DTD declaration is opened in the XML Editor, 
+  the editor uses the DTD at the URI to provide validation and code-completion. 
+  However, if you want to use an alternate, local, DTD for a declaration referring to one 
+  at a remote URI, the <strong>Add Local DTD</strong> section let's you do just that: 
+  click the Add button, and enter the URI and the path to the local copy of the DTD 
+  you want to use. 
+</p>
+<p>
+  Note: in a DTD declaration such as: 
+</p>
+<pre>
+&lt;!DOCTYPE faces-config PUBLIC 
+	"-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN" 
+	"http://java.sun.com/dtd/web-facesconfig_1_1.dtd"&gt;
+</pre>
+<p>
+  faces-config is the name of the DTD's root element, "-//Sun ..." is its ID, 
+  and the "http:// ..." part is its URI.
+</p>
+<p>
+  The checkbox for <strong>Cache remote DTD to local directory</strong> lets you avoid repeatedly fetching 
+  a remote DTD. When checked, DTDs whose URI is not already specified in the <strong>Add Local DTD</strong>
+  section are cached to a local file the first time they are accessed, then read from that file thereafter. 
+</p>
+<p class="note">
+  <strong>Note:</strong> once a DTD is cached locally, the remote DTD is no longer consulted and the cached 
+  copy is not updated even if the remote one changes. 
+</p>
+
+
+<h3><a name="JavaScriptEditor">JavaScript Editor</a></h3>
+<h3><a name="JSPEditor">JSP Editor</a></h3>
+<h3><a name="TaskTags">Task Tags</a></h3>
+<h3><a name="TLD">TLD</a></h3>
+<h3><a name="XML">XML</a></h3>
+
+<!-- =================================================== -->
+<!-- Project Property Page -->
+<!-- =================================================== -->
+<h2>Project Property Page</h2>
+<h3><a name="ProjectConfiguration">Project Configuration</a></h3>
+<p>
+  <img src="project_config.png" alt="Project settings"/>
+</p>
+
+
+<h3><a name="JavaScript">JavaScript</a></h3>
+<p>
+  <strong>JavaScript</strong> property page allow you to configure JavaScript libraries.
+  This page has two tabs below:
+</p>
+<dl>
+  <dt>Libraries</dt>
+  <dd>
+    <p>
+      <img src="project_js_1.png" alt="JavaScript libraries settings"/>
+    </p>
+    <p>
+      In the <strong>Libraries</strong> tab, you can add *.js files as JavaScript library.
+    </p>
+  </dd>
+  <dt>Code Completion</dt>
+  <dd>
+    <p>
+      <img src="project_js_2.png" alt="JavaScript code completion settings"/>
+    </p>
+    <p>
+      In the <strong>Code Completion</strong> tab, 
+      you can choose JavaScript libraries which used in your project, 
+      JavaScript editor shows functions, methods and classes which are provided by 
+      these libraries in code completion proposals.
+    </p>
+    <p>
+      The latest version of EclipseHTMLEditor supports only 
+      <strong>prototype.js</strong>, <strong>script.aculo.us</strong> and <strong>Adobe AIR</strong>.
+    </p>
+  </dd>
+</dl>
+
+</body>
+</html>

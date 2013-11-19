@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <!--====================================================-->
+   <!-- Extention points -->
+   <!--====================================================-->
+   <extension-point id="customTagConverter" name="customTagConverter" schema="schema/customTagConverter.exsd"/>
+   <extension-point id="customTagAttributeAssist" name="customTagAttributeAssist" schema="schema/customTagAttributeAssist.exsd"/>
+   <extension-point id="paletteItem" name="paletteItem" schema="schema/paletteItem.exsd"/>
+   <extension-point id="noValidationNatures" name="noValidationNatures" schema="schema/noValidationNatures.exsd"/>
+   <extension-point id="fileAssistProcessor" name="fileAssistProcessor" schema="schema/fileAssistProcessor.exsd"/>
+   <extension-point id="hyperlinkProvider" name="hyperlinkProvider" schema="schema/hyperlinkProvider.exsd"/>
+   <extension-point id="tldLocator" name="tldLocator" schema="schema/tldLocator.exsd"/>
+   <extension-point id="customTagValidator" name="customTagValidator" schema="schema/customTagValidator.exsd"/>
+   <extension-point id="preferenceContributer" name="preferenceContributer" schema="schema/preferenceContributer.exsd"/>
+   <extension-point id="pagefilter" name="pagefilter" schema="schema/pagefilter.exsd"/>
+   <extension-point id="javaScriptCompleter" name="javaScriptCompleter" schema="schema/javaScriptCompleter.exsd"/>
+   <extension-point id="jspelAssistProcessor" name="jspelAssistProcessor" schema="schema/jspelAssistProcessor.exsd"/>
+
+   <!--====================================================-->
+   <!-- Editors -->
+   <!--====================================================-->
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="jp.sf.amateras.htmleditor.editors.HTMLEditor"
+            contributorClass="jp.sf.amateras.htmleditor.editors.HTMLEditorContributor"
+            default="true"
+            extensions="html,xhtml"
+            icon="icons/html.png"
+            id="jp.sf.amateras.htmleditor.editors.HTMLEditor"
+            name="%plugin.editor.htmleditor"/>
+      <editor
+            class="jp.sf.amateras.csseditor.editors.CSSEditor"
+            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+            extensions="css"
+            icon="icons/css.png"
+            id="jp.sf.amateras.csseditor.editors.CSSEditor"
+            name="%plugin.editor.csseditor"/>
+      <editor
+            class="jp.sf.amateras.jspeditor.editors.JSPEditor"
+            contributorClass="jp.sf.amateras.jspeditor.editors.JSPEditorContributor"
+            extensions="jsp,jspf"
+            icon="icons/jsp.png"
+            id="jp.sf.amateras.jspeditor.editors.JSPEditor"
+            name="%plugin.editor.jspeditor"/>
+      <editor
+            class="jp.sf.amateras.xmleditor.editors.XMLEditor"
+            contributorClass="jp.sf.amateras.xmleditor.editors.XMLEditorContributor"
+            extensions="xml,tld,xsl"
+            icon="icons/xml.png"
+            id="jp.sf.amateras.xmleditor.editors.XMLEditor"
+            name="%plugin.editor.xmleditor">
+      </editor>
+      <editor
+            class="jp.sf.amateras.dtdeditor.editors.DTDEditor"
+            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+            extensions="dtd"
+            icon="icons/dtd.gif"
+            id="jp.sf.amateras.dtdeditor.editors.DTDEditor"
+            name="%plugin.editor.dtdeditor"/>
+      <editor
+            class="jp.sf.amateras.jseditor.editors.JavaScriptEditor"
+            contributorClass="jp.sf.amateras.jseditor.editors.JavaScriptEditorContributor"
+            extensions="js"
+            icon="icons/javascript.gif"
+            id="jp.sf.amateras.jseditor.editors.JavaScriptEditor"
+            name="%plugin.editor.jseditor"/>
+      <!--
+      <editor
+            class="jp.sf.amateras.htmleditor.editors.WebBrowser"
+            extensions="url"
+            icon="icons/web.gif"
+            id="jp.sf.amateras.htmleditor.editors.WebBrowser"
+            name="%plugin.editor.webbrowser"/>
+      -->
+   </extension>
+
+   <extension
+         point="jp.sf.amateras.htmleditor.fileAssistProcessor">
+      <processor class="jp.sf.amateras.htmleditor.assist.FileAssistProcessor"/>
+   </extension>
+   <extension
+         point="jp.sf.amateras.htmleditor.customTagAttributeAssist">
+      <customTagAttributeAssist
+            class="jp.sf.amateras.jspeditor.editors.JSTLAttributeAssist">
+      </customTagAttributeAssist>
+   </extension>
+
+   <!--====================================================-->
+   <!-- Wizards -->
+   <!--====================================================-->
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="%plugin.preference.category"
+            id="jp.sf.amateras.htmleditor"/>
+      <wizard
+            class="jp.sf.amateras.htmleditor.wizards.HTMLNewWizard"
+            icon="icons/html.png"
+            category="jp.sf.amateras.htmleditor"
+            name="%plugin.wizard.html"
+            id="jp.sf.amateras.htmleditor.wizards.HTMLNewWizard"/>
+      <!--
+      <wizard
+            icon="icons/web.gif"
+            class="jp.sf.amateras.htmleditor.wizards.URLNewWizard"
+            category="jp.sf.amateras.htmleditor"
+            name="%plugin.wizard.url"
+            id="jp.sf.amateras.htmleditor.wizards.URLNewWizard"/>
+      -->
+      <wizard
+            class="jp.sf.amateras.htmleditor.wizards.JSPNewWizard"
+            icon="icons/jsp.png"
+            category="jp.sf.amateras.htmleditor"
+            name="%plugin.wizard.jsp"
+            id="jp.sf.amateras.htmleditor.wizards.JSPNewWizard"/>
+      <wizard
+            class="jp.sf.amateras.htmleditor.wizards.XMLNewWizard"
+            icon="icons/xml.png"
+            category="jp.sf.amateras.htmleditor"
+            name="%plugin.wizard.xml"
+            id="jp.sf.amateras.htmleditor.wizards.XMLNewWizard"/>
+      <wizard
+            category="jp.sf.amateras.htmleditor"
+            class="jp.sf.amateras.jseditor.wizards.AddJavaScriptLibraryWizard"
+            icon="icons/javascript.gif"
+            id="jp.sf.amateras.jseditor.wizards.AddJavaScriptLibraryWizard"
+            name="%plugin.wizard.jslibrary">
+      </wizard>
+   </extension>
+
+   <!--====================================================-->
+   <!-- Preferences -->
+   <!--====================================================-->
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="jp.sf.amateras.htmleditor.HTMLEditorPreferencePage"
+            name="%plugin.preference.category"
+            id="jp.sf.amateras.htmleditor.category"/>
+      <!--
+      <page
+            class="jp.sf.amateras.htmleditor.AppearancePreferencePage"
+            category="jp.sf.amateras.htmleditor.category"
+            name="%plugin.preference.appearance"
+            id="jp.sf.amateras.htmleditor.page1"/>
+      -->
+      <page
+            class="jp.sf.amateras.htmleditor.CustomAssistPreferencePage"
+            category="jp.sf.amateras.htmleditor.category/jp.sf.amateras.htmleditor.AssistPreferencePage"
+            name="%plugin.preference.customassist"
+            id="jp.sf.amateras.htmleditor.CustomAssistPreferencePage"/>
+      <page
+            class="jp.sf.amateras.htmleditor.DTDPreferencePage"
+            category="jp.sf.amateras.htmleditor.category"
+            name="%plugin.preference.dtd"
+            id="jp.sf.amateras.htmleditor.DTDPreferencePage"/>
+      <page
+            class="jp.sf.amateras.htmleditor.TLDPreferencePage"
+            category="jp.sf.amateras.htmleditor.category"
+            name="%plugin.preference.tld"
+            id="jp.sf.amateras.htmleditor.TLDPreferencePage"/>
+      <page
+            class="jp.sf.amateras.htmleditor.AssistPreferencePage"
+            category="jp.sf.amateras.htmleditor.category"
+            name="%plugin.preference.codeassist"
+            id="jp.sf.amateras.htmleditor.AssistPreferencePage"/>
+      <page
+            class="jp.sf.amateras.htmleditor.CSSEditorPreferencePage"
+            category="jp.sf.amateras.htmleditor.category"
+            name="%plugin.preference.csseditor"
+            id="jp.sf.amateras.htmleditor.CSSEditorPreferencePage"/>
+      <page
+            class="jp.sf.amateras.htmleditor.JSPEditorPreferencePage"
+            category="jp.sf.amateras.htmleditor.category"
+            name="%plugin.preference.jspeditor"
+            id="jp.sf.amateras.htmleditor.JSPEditorPreferencePage"/>
+      <page
+            class="jp.sf.amateras.htmleditor.JavaScriptEditorPreferencePage"
+            category="jp.sf.amateras.htmleditor.category"
+            name="%plugin.preference.jseditor"
+            id="jp.sf.amateras.htmleditor.JavaScriptEditorPreferencePage"/>
+      <page
+            class="jp.sf.amateras.htmleditor.tasktag.HTMLTaskTagPreferencePage"
+            category="jp.sf.amateras.htmleditor.category"
+            name="%plugin.preference.tasktag"
+            id="jp.sf.amateras.htmleditor.tasktag.HTMLTaskTagPreferencePage"/>
+      <page
+            class="jp.sf.amateras.htmleditor.XMLPreferencePage"
+            category="jp.sf.amateras.htmleditor.category"
+            name="XML"
+            id="jp.sf.amateras.htmleditor.XMLPreferencePage"/>
+      <page
+            class="jp.sf.amateras.htmleditor.template.HTMLTemplatePreferencePage"
+            category="jp.sf.amateras.htmleditor.category/jp.sf.amateras.htmleditor.AssistPreferencePage"
+            name="%plugin.preference.template"
+            id="jp.sf.amateras.htmleditor.template.HTMLTemplatePreferencePage"/>
+      <page
+            class="jp.sf.amateras.htmleditor.FormatterPreferencePage"
+            category="jp.sf.amateras.htmleditor.category"
+            name="%plugin.preference.formatter"
+            id="jp.sf.amateras.htmleditor.FormatterPreferencePage"/>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer class="jp.sf.amateras.htmleditor.HTMLPreferenceInitializer"/>
+   </extension>
+
+   <!--====================================================-->
+   <!-- Views -->
+   <!--====================================================-->
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="%plugin.preference.category"
+            id="jp.sf.amateras.htmleditor"/>
+      <view
+            icon="icons/image.gif"
+            category="jp.sf.amateras.htmleditor"
+            class="jp.sf.amateras.htmleditor.views.ImageView"
+            name="%plugin.views.image"
+            id="jp.sf.amateras.htmleditor.views.ImageView"/>
+
+      <view
+            class="jp.sf.amateras.htmleditor.views.PaletteView"
+            category="jp.sf.amateras.htmleditor"
+            icon="icons/palette.gif"
+            name="%plugin.views.palette"
+            id="jp.sf.amateras.htmleditor.views.PaletteView"/>
+      <view
+            category="jp.sf.amateras.htmleditor"
+            class="jp.sf.amateras.htmleditor.views.CSSPreviewView"
+            icon="icons/css.png"
+            id="jp.sf.amateras.htmleditor.views.CSSPreviewView"
+            name="%plugin.views.csspreview"/>
+   </extension>
+   <!--====================================================-->
+   <!-- Project properties -->
+   <!--====================================================-->
+   <extension
+         id="jp.sf.amateras.htmleditor.HTMLProjectPropertyPage"
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="jp.sf.amateras.htmleditor.HTMLProjectPropertyPage"
+            id="jp.sf.amateras.htmleditor.HTMLProjectPropertyPage"
+            name="%plugin.preference.category">
+         <enabledWhen>
+            <adapt
+                  type="org.eclipse.core.resources.IProject">
+            </adapt>
+         </enabledWhen>
+      </page>
+      <page
+            category="jp.sf.amateras.htmleditor.HTMLProjectPropertyPage"
+            class="jp.sf.amateras.htmleditor.JavaScriptPropertyPage"
+            id="jp.sf.amateras.htmleditor.JavaScriptPropertyPage"
+            name="JavaScript">
+         <enabledWhen>
+            <adapt
+                  type="org.eclipse.core.resources.IProject">
+            </adapt>
+         </enabledWhen>
+      </page>
+   </extension>
+
+   <!--
+   <extension
+         point="org.eclipse.debug.core.sourceLocators">
+      <sourceLocator
+            class="jp.sf.amateras.jspeditor.editors.JSPSourceLocator"
+            name="JSP Source Locator"
+            id="jp.sf.amateras.jspeditor.JSPSourceLocator"/>
+   </extension>
+   -->
+
+   <!--====================================================-->
+   <!-- Template -->
+   <!--====================================================-->
+   <extension
+         point="org.eclipse.ui.editors.templates">
+      <contextType
+            class="jp.sf.amateras.htmleditor.template.HTMLContextType"
+            name="HTML/JSP/XML"
+            id="jp.sf.amateras.htmleditor.templateContextType.html"/>
+      <contextType
+            class="jp.sf.amateras.htmleditor.template.JavaScriptContextType"
+            name="JavaScript"
+            id="jp.sf.amateras.htmleditor.templateContextType.javascript"/>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.catch"
+            id="jp.sf.amateras.htmleditor.template.js.catch"
+            name="catch">
+         <pattern>
+catch (e) {
+	${cursor}// ${todo}: handle exception
+}
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.do"
+            id="jp.sf.amateras.htmleditor.template.js.do"
+            name="do">
+         <pattern>
+do {
+	${line_selection}${cursor}
+} while (${condition});
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.else"
+            id="jp.sf.amateras.htmleditor.template.js.else"
+            name="else">
+         <pattern>
+else {
+	${cursor}
+}
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.elseif"
+            id="jp.sf.amateras.htmleditor.template.js.elseif"
+            name="elseif">
+         <pattern>
+else if (${condition}) {
+	${cursor}
+}
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.for"
+            id="jp.sf.amateras.htmleditor.template.js.for"
+            name="for">
+         <pattern>
+for (var ${index} = 0; ${index} &lt; ${array}.length; ${index}++) {
+	${line_selection}${cursor}
+}
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.forwithvar"
+            id="jp.sf.amateras.htmleditor.template.js.forwithvar"
+            name="for">
+         <pattern>
+for (var ${index} = 0; ${index} &lt; ${array}.length; ${index}++) {
+	var ${array_element} = ${array}[${index}];
+	${cursor}
+}
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.forin"
+            id="jp.sf.amateras.htmleditor.template.js.forin"
+            name="forin">
+         <pattern>
+for (var ${iterable_element} in ${iterable}) {
+	${cursor}
+}
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.function"
+            id="jp.sf.amateras.htmleditor.template.js.function"
+            name="function">
+         <pattern>
+function ${name}(${args}) {
+    ${cursor}
+}
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.anonymousFunction"
+            id="jp.sf.amateras.htmleditor.template.js.anonymousFunction"
+            name="function">
+         <pattern>
+function (${args}) {
+    ${cursor}
+}
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.if"
+            id="jp.sf.amateras.htmleditor.template.js.if"
+            name="if">
+         <pattern>
+if (${condition}) {
+	${line_selection}${cursor}
+}
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.ifelse"
+            id="jp.sf.amateras.htmleditor.template.js.ifelse"
+            name="ifelse">
+         <pattern>
+if (${condition}) {
+	${cursor}
+} else {
+
+}
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.lazy"
+            id="jp.sf.amateras.htmleditor.template.js.lazy"
+            name="lazy">
+         <pattern>
+if (${name:var} == null) {
+	${name} = new ${type}(${arguments});
+	${cursor}
+}
+
+return ${name};
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.new"
+            id="jp.sf.amateras.htmleditor.template.js.new"
+            name="new">
+         <pattern>
+new ${type}(${arguments});
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.newwithvar"
+            id="jp.sf.amateras.htmleditor.template.js.newwithvar"
+            name="new">
+         <pattern>
+var ${name} = new ${type}(${arguments});
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.require"
+            id="jp.sf.amateras.htmleditor.template.js.require"
+            name="require">
+         <pattern>
+require('${value}')
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.requirewithvar"
+            id="jp.sf.amateras.htmleditor.template.js.requirewithvar"
+            name="require">
+         <pattern>
+var ${name} = require('${value}');
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.switch"
+            id="jp.sf.amateras.htmleditor.template.js.switch"
+            name="switch">
+         <pattern>
+switch (${key}) {
+	case ${value}:
+		${cursor}
+		break;
+
+	default:
+		break;
+}
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.try"
+            id="jp.sf.amateras.htmleditor.template.js.try"
+            name="try">
+         <pattern>
+try {
+	${line_selection}${cursor}
+} catch (${e}) {
+	// ${todo}: handle exception
+}
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.var"
+            id="jp.sf.amateras.htmleditor.template.js.var"
+            name="var">
+         <pattern>
+var ${name};
+         </pattern>
+      </template>
+      <template
+            autoinsert="false"
+            contextTypeId="jp.sf.amateras.htmleditor.templateContextType.javascript"
+            description="%plugin.template.js.while"
+            id="jp.sf.amateras.htmleditor.template.js.while"
+            name="while">
+         <pattern>
+while (${condition}) {
+	${line_selection}${cursor}
+}
+         </pattern>
+      </template>
+   </extension>
+
+   <!--====================================================-->
+   <!-- nature and builder -->
+   <!--====================================================-->
+   <extension
+         id="HTMLProjectNature"
+         name="HTMLProjectNature"
+         point="org.eclipse.core.resources.natures">
+      <!--
+      <requires-nature
+            id="org.eclipse.jdt.core.javanature">
+      </requires-nature>
+      -->
+      <runtime>
+         <run
+               class="jp.sf.amateras.htmleditor.HTMLProjectNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         id="HTMLProjectBuilder"
+         name="HTMLProjectBuilder"
+         point="org.eclipse.core.resources.builders">
+      <builder>
+         <run class="jp.sf.amateras.htmleditor.HTMLProjectBuilder"/>
+      </builder>
+   </extension>
+
+   <!--====================================================-->
+   <!-- JavaScript Launcher -->
+   <!--====================================================-->
+   <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+            delegate="jp.sf.amateras.jseditor.launch.JavaScriptLaunchConfigurationDelegate"
+            id="jp.sf.amateras.jseditor.launch.JavaScriptLaunchConfigurationType"
+            modes="run"
+            name="%plugin.launcher.javascript"
+            public="true">
+         <fileExtension
+               default="false"
+               extension="js"/>
+      </launchConfigurationType>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            configTypeID="jp.sf.amateras.jseditor.launch.JavaScriptLaunchConfigurationType"
+            icon="icons/javascript.gif"
+            id="jp.sf.amateras.jseditor.launch.launchConfigurationTypeImage"/>
+   </extension>
+   <extension
+		 point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+	  <launchConfigurationTabGroup
+			type="jp.sf.amateras.jseditor.launch.JavaScriptLaunchConfigurationType"
+			class="jp.sf.amateras.jseditor.launch.JavaScriptTabGroup"
+			id="jp.sf.amateras.jseditor.launch.JavaScriptTabGroup">
+	  </launchConfigurationTabGroup>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchShortcuts">
+      <shortcut
+            class="jp.sf.amateras.jseditor.launch.JavaScriptLaunchShortcut"
+            icon="icons/javascript.gif"
+            id="jp.sf.amateras.jseditor.launch.JavaScriptLaunchShortcut"
+            label="%plugin.launcher.javascript"
+            modes="run">
+         <contextualLaunch>
+            <enablement>
+               <with variable="selection">
+                  <count value="1"/>
+                  <iterate>
+                     <test
+                           property="org.eclipse.debug.ui.matchesPattern"
+                           value="*.js"/>
+                  </iterate>
+               </with>
+            </enablement>
+         </contextualLaunch>
+      </shortcut>
+   </extension>
+   <extension
+         point="org.eclipse.jdt.core.classpathVariableInitializer">
+      <classpathVariableInitializer
+            class="jp.sf.amateras.htmleditor.WebAppClasspathVariableInitializer"
+            variable="WEBAPP_LIBS"/>
+   </extension>
+   <!--
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="jp.sf.amateras.htmleditor"
+            name="Eclipse HTML Editor"/>
+      <command
+            categoryId="jp.sf.amateras.htmleditor"
+            id="jp.sf.amateras.xmleditor.format"
+            name="%plugin.command.formatXML"/>
+      <command
+            categoryId="jp.sf.amateras.htmleditor"
+            id="jp.sf.amateras.jspeditor.format"
+            name="%plugin.command.formatJSP"/>
+   </extension>
+   -->
+   <!--
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="jp.sf.amateras.xmleditor.format"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+SHIFT+F"/>
+      <key
+            commandId="jp.sf.amateras.jspeditor.format"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+SHIFT+F"/>
+   </extension>
+   -->
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml"
+            primary="true">
+      </toc>
+   </extension>
+
+   <!--====================================================-->
+   <!-- JavaScript Completers -->
+   <!--====================================================-->
+   <extension
+         point="jp.sf.amateras.htmleditor.javaScriptCompleter">
+      <completer
+            class="jp.sf.amateras.jseditor.editors.additional.ECMAScriptCompleter"
+            name="ECMA Script">
+      </completer>
+      <completer
+            class="jp.sf.amateras.jseditor.editors.additional.FireFoxCompleter"
+            name="FireFox">
+      </completer>
+      <completer
+            class="jp.sf.amateras.jseditor.editors.additional.ChromeCompleter"
+            name="Chrome">
+      </completer>
+      <completer
+            class="jp.sf.amateras.jseditor.editors.additional.PrototypeCompleter"
+            name="Prototype JavaScript framework">
+      </completer>
+      <completer
+            class="jp.sf.amateras.jseditor.editors.additional.ScriptaculousCompleter"
+            name="script.aculo.us">
+      </completer>
+      <completer
+            class="jp.sf.amateras.jseditor.editors.additional.JQueryCompleter"
+            name="jQuery">
+      </completer>
+      <completer
+            class="jp.sf.amateras.jseditor.editors.additional.NodeJsCompleter"
+            name="Node.js">
+      </completer>
+<!--
+      <completer
+            class="jp.sf.amateras.jseditor.editors.additional.AIRCompleter"
+            name="AIR">
+      </completer>
+-->
+   </extension>
+
+</plugin>
