@@ -15,7 +15,6 @@ import jp.sf.amateras.htmleditor.HTMLProjectParams;
 import jp.sf.amateras.htmleditor.HTMLUtil;
 import jp.sf.amateras.htmleditor.SearchXPathDialog;
 import jp.sf.amateras.htmleditor.assist.HTMLAssistProcessor;
-import jp.sf.amateras.htmleditor.assist.InnerJavaScriptAssistProcessor;
 
 import org.apache.commons.jrcs.diff.AddDelta;
 import org.apache.commons.jrcs.diff.ChangeDelta;
@@ -378,7 +377,7 @@ public class HTMLSourceEditor extends TextEditor {
 					return Status.OK_STATUS;
 				}
 
-				InnerJavaScriptAssistProcessor jsProcessor =
+//				InnerJavaScriptAssistProcessor jsProcessor =
 					((HTMLConfiguration)getSourceViewerConfiguration()).getJavaScriptAssistProcessor();
 
 				return Status.OK_STATUS;

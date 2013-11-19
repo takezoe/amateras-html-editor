@@ -69,7 +69,7 @@ public class CSSOutlinePage extends ContentOutlinePage {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	private class CSSContentProvider implements ITreeContentProvider {
 		public Object[] getChildren(Object parentElement) {
 			if(parentElement instanceof ArrayList){

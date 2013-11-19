@@ -108,7 +108,7 @@ public class XMLAssistProcessor extends HTMLAssistProcessor {
 						hasBody = false;
 					}
 					TagInfo tagInfo = new TagInfo(name,hasBody);
-					@SuppressWarnings("unchecked")
+					@SuppressWarnings("rawtypes")
 					Iterator ite = element.attributes.keySet().iterator();
 
 					// set child tags

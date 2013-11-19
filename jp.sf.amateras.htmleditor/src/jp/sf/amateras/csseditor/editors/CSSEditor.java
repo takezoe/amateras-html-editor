@@ -166,7 +166,7 @@ public class CSSEditor extends TextEditor {
 	    setAction("ContentAssistProposal", action);
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override public Object getAdapter(Class adapter){
 		if(IContentOutlinePage.class.equals(adapter)){
 			return outline;

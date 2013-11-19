@@ -216,7 +216,7 @@ public class PaletteView extends ViewPart {
 				String name = group.getAttributeNode("name").getValue();
 				boolean visible = new Boolean(group.getAttributeNode("visible").getValue()).booleanValue();
 				
-				@SuppressWarnings("unchecked")
+				@SuppressWarnings("rawtypes")
 				List entries = viewer.getPaletteRoot().getChildren();
 				PaletteDrawer drawer = null;
 				
@@ -251,7 +251,7 @@ public class PaletteView extends ViewPart {
 			}
 		}
 		
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings("rawtypes")
 		List entries = viewer.getPaletteRoot().getChildren();
 		for(int i=0;i<entries.size();i++){
 			PaletteDrawer group = (PaletteDrawer)entries.get(i);
@@ -305,7 +305,7 @@ public class PaletteView extends ViewPart {
 			list.clear();
 		}
 		
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings("rawtypes")
 		List entries = viewer.getPaletteRoot().getChildren();
 		PaletteDrawer group = null;
 		
@@ -352,14 +352,14 @@ public class PaletteView extends ViewPart {
 		
 		this.items.remove(category);
 		
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings("rawtypes")
 		List entries = viewer.getPaletteRoot().getChildren();
 		PaletteDrawer group = null;
 		
 		for(int i=0;i<entries.size();i++){
 			group = (PaletteDrawer)entries.get(i);
 			if(group.getLabel().equals(category)){
-				@SuppressWarnings("unchecked")
+				@SuppressWarnings("rawtypes")
 				List children = group.getChildren();
 				for(int j=0;j<children.size();j++){
 					tools.remove((PaletteEntry)children.get(j));
@@ -415,7 +415,7 @@ public class PaletteView extends ViewPart {
 		StringBuffer sb = new StringBuffer();
 		sb.append("<palette>");
 		
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings("rawtypes")
 		List entries = viewer.getPaletteRoot().getChildren();
 		
 		sb.append("<groups>");
@@ -472,7 +472,7 @@ public class PaletteView extends ViewPart {
 			
 			table = new Table(container,SWT.BORDER|SWT.CHECK);
 			table.setLayoutData(new GridData(GridData.FILL_BOTH));
-			@SuppressWarnings("unchecked")
+			@SuppressWarnings("rawtypes")
 			List entries = viewer.getPaletteRoot().getChildren();
 			
 			for(int i=0;i<entries.size();i++){
@@ -559,7 +559,7 @@ public class PaletteView extends ViewPart {
 			return container;
 		}
 		
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings({"rawtypes", "unchecked"})
 		protected void okPressed() {
 			Iterator<String> ite = operations.keySet().iterator();
 			while(ite.hasNext()){

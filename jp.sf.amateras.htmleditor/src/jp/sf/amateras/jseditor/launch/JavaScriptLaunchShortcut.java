@@ -72,6 +72,7 @@ public class JavaScriptLaunchShortcut implements ILaunchShortcut {
 		ILaunchConfigurationType type = manager.getLaunchConfigurationType(
 				"tk.eclipse.plugin.jseditor.launch.JavaScriptLaunchConfigurationType");
 		
+		@SuppressWarnings("deprecation")
 		ILaunchConfigurationWorkingCopy wc = type.newInstance(null, 
 				manager.generateUniqueLaunchConfigurationNameFrom(file.getName()));
 		

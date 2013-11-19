@@ -162,7 +162,7 @@ public abstract class TableViewerSupport<T> {
 		return gd;
 	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public static class ListContentProvider implements IStructuredContentProvider {
 		List fContents;	
 
