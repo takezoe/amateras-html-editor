@@ -27,7 +27,7 @@ public class ClosureCompilerLaunchUtil {
 		}
 		File dir = HTMLPlugin.getDefault().getStateLocation().toFile();
 		files = new File[]{
-				new File(dir, "lib/compiler.jar"),
+				new File(dir, "compiler.jar"),
 		};
 		return files;
 	}
@@ -45,7 +45,7 @@ public class ClosureCompilerLaunchUtil {
 		File[] files = getClassPaths();
 		for(int i=0;i<files.length;i++){
 			if(!files[i].exists()){
-				copyFile(HTMLPlugin.getDefault().getBundle().getEntry("/" + files[i].getName()),
+				copyFile(HTMLPlugin.getDefault().getBundle().getEntry("/lib/" + files[i].getName()),
 						files[i]);
 			}
 		}
