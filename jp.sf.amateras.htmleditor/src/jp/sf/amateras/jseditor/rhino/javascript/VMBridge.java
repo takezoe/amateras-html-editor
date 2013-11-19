@@ -51,10 +51,10 @@ public abstract class VMBridge
     private static VMBridge makeInstance()
     {
         String[] classNames = {
-            "tk.eclipse.plugin.jseditor.rhino.javascript.VMBridge_custom",
-            "tk.eclipse.plugin.jseditor.rhino.javascript.jdk15.VMBridge_jdk15",
-            "tk.eclipse.plugin.jseditor.rhino.javascript.jdk13.VMBridge_jdk13",
-            "tk.eclipse.plugin.jseditor.rhino.javascript.jdk11.VMBridge_jdk11",
+            "jp.sf.amateras.jseditor.rhino.javascript.VMBridge_custom",
+            "jp.sf.amateras.jseditor.rhino.javascript.jdk15.VMBridge_jdk15",
+            "jp.sf.amateras.jseditor.rhino.javascript.jdk13.VMBridge_jdk13",
+            "jp.sf.amateras.jseditor.rhino.javascript.jdk11.VMBridge_jdk11",
         };
         for (int i = 0; i != classNames.length; ++i) {
             String className = classNames[i];

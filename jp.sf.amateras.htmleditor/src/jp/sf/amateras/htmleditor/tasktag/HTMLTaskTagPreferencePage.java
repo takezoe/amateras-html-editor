@@ -36,9 +36,9 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
  * The preference page to add / edit / remove TaskTags.
  * 
  * @author Naoki Takezoe
- * @see tk.eclipse.plugin.htmleditor.tasktag.ITaskTagDetector
- * @see tk.eclipse.plugin.htmleditor.tasktag.TaskTag
- * @see tk.eclipse.plugin.htmleditor.HTMLProjectBuilder
+ * @see jp.sf.amateras.htmleditor.tasktag.ITaskTagDetector
+ * @see jp.sf.amateras.htmleditor.tasktag.TaskTag
+ * @see jp.sf.amateras.htmleditor.HTMLProjectBuilder
  */
 public class HTMLTaskTagPreferencePage extends PreferencePage implements IWorkbenchPreferencePage {
 	

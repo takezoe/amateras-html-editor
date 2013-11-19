@@ -10,7 +10,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 
 /**
- * The base class for the {@link tk.eclipse.plugin.htmleditor.tasktag.ITaskTagDetector}
+ * The base class for the {@link jp.sf.amateras.htmleditor.tasktag.ITaskTagDetector}
  * implementations.
  * This class provides the base implementation and some utility methods for subclasses.
  * 

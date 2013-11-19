@@ -201,20 +201,20 @@ public class PolicySecurityController extends SecurityController
         cfw.add(ByteCode.RETURN);
         cfw.stopMethod((short)1);
         String callableCallSig = 
-            "Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;" +
-            "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;" +
-            "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;" +
+            "Ljp.sf.amateras.jseditor.rhino/javascript/Context;" +
+            "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;" +
+            "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;" +
             "[Ljava/lang/Object;)Ljava/lang/Object;";
         
         cfw.startMethod("call",
-                "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Callable;" + callableCallSig,
+                "(Ljp.sf.amateras.jseditor.rhino/javascript/Callable;" + callableCallSig,
                 (short)(ClassFileWriter.ACC_PUBLIC
                         | ClassFileWriter.ACC_FINAL));
         for(int i = 1; i < 6; ++i) {
             cfw.addALoad(i);
         }
         cfw.addInvoke(ByteCode.INVOKEINTERFACE, 
-                "tk.eclipse.plugin.jseditor.rhino/javascript/Callable", "call", 
+                "jp.sf.amateras.jseditor.rhino/javascript/Callable", "call", 
                 "(" + callableCallSig);
         cfw.add(ByteCode.ARETURN);
         cfw.stopMethod((short)6);

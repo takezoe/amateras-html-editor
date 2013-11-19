@@ -10,7 +10,7 @@ import org.eclipse.core.resources.IFile;
  * This provides additional hyperlinks to the <code>HTMLSourceEditor</code>.
  * 
  * @author Naoki Takezoe
- * @see tk.eclipse.plugin.htmleditor.HTMLHyperlinkDetector
+ * @see jp.sf.amateras.htmleditor.HTMLHyperlinkDetector
  */
 public interface IHyperlinkProvider {
 	

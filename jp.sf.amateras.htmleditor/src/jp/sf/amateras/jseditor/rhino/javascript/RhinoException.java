@@ -269,7 +269,7 @@ public abstract class RhinoException extends RuntimeException
                 buffer.append(lineSeparator);
             } else if (interpreterStack != null &&
                 interpreterStack.size() > interpreterStackIndex && 
-                "tk.eclipse.plugin.jseditor.rhino.javascript.Interpreter".equals(e.getClassName()) &&
+                "jp.sf.amateras.jseditor.rhino.javascript.Interpreter".equals(e.getClassName()) &&
                 "interpretLoop".equals(e.getMethodName()))
             {
                 buffer.append(interpreterStack.get(interpreterStackIndex++));

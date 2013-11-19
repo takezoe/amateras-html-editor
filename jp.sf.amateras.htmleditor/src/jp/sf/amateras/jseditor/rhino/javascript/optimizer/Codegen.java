@@ -109,7 +109,7 @@ public class Codegen implements Evaluator
         synchronized (globalLock) {
             serial = ++globalSerialClassCounter;
         }
-        String mainClassName = "tk.eclipse.plugin.jseditor.rhino.javascript.gen.c"+serial;
+        String mainClassName = "jp.sf.amateras.jseditor.rhino.javascript.gen.c"+serial;
 
         byte[] mainClassBytes = compileToClassFile(compilerEnv, mainClassName,
                                                    tree, encodedSource,
@@ -324,7 +324,7 @@ public class Codegen implements Evaluator
         }
 
         if (hasScript) {
-            cfw.addInterface("tk.eclipse.plugin.jseditor.rhino/javascript/Script");
+            cfw.addInterface("jp.sf.amateras.jseditor.rhino/javascript/Script");
             generateScriptCtor(cfw);
             generateMain(cfw);
             generateExecute(cfw);
@@ -402,11 +402,11 @@ public class Codegen implements Evaluator
         cfw.addALoad(1); // cx
         cfw.addALoad(2); // scope
         cfw.addInvoke(ByteCode.INVOKEVIRTUAL,
-                      "tk.eclipse.plugin.jseditor.rhino/javascript/BaseFunction",
+                      "jp.sf.amateras.jseditor.rhino/javascript/BaseFunction",
                       "createObject",
-                      "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                      +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                      +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                      "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                      +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                      +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
         cfw.addAStore(firstLocal);
 
         cfw.addALoad(0);
@@ -424,10 +424,10 @@ public class Codegen implements Evaluator
                       getBodyMethodSignature(ofn.fnode));
         int exitLabel = cfw.acquireLabel();
         cfw.add(ByteCode.DUP); // make a copy of direct call result
-        cfw.add(ByteCode.INSTANCEOF, "tk.eclipse.plugin.jseditor.rhino/javascript/Scriptable");
+        cfw.add(ByteCode.INSTANCEOF, "jp.sf.amateras.jseditor.rhino/javascript/Scriptable");
         cfw.add(ByteCode.IFEQ, exitLabel);
         // cast direct call result
-        cfw.add(ByteCode.CHECKCAST, "tk.eclipse.plugin.jseditor.rhino/javascript/Scriptable");
+        cfw.add(ByteCode.CHECKCAST, "jp.sf.amateras.jseditor.rhino/javascript/Scriptable");
         cfw.add(ByteCode.ARETURN);
         cfw.markLabel(exitLabel);
 
@@ -469,8 +469,8 @@ public class Codegen implements Evaluator
             return;
 
         cfw.startMethod("resumeGenerator",
-                        "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;" +
-                        "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;" +
+                        "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;" +
+                        "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;" +
                         "ILjava/lang/Object;" +
                         "Ljava/lang/Object;)Ljava/lang/Object;",
                         (short)(ClassFileWriter.ACC_PUBLIC
@@ -497,8 +497,8 @@ public class Codegen implements Evaluator
             if (isGenerator(n)) {
                 String type = "(" +
                               mainClassSignature +
-                              "Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;" +
-                              "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;" +
+                              "Ljp.sf.amateras.jseditor.rhino/javascript/Context;" +
+                              "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;" +
                               "Ljava/lang/Object;" +
                               "Ljava/lang/Object;I)Ljava/lang/Object;";
                 cfw.addInvoke(ByteCode.INVOKESTATIC,
@@ -523,9 +523,9 @@ public class Codegen implements Evaluator
     private void generateCallMethod(ClassFileWriter cfw)
     {
         cfw.startMethod("call",
-                        "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;" +
-                        "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;" +
-                        "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;" +
+                        "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;" +
+                        "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;" +
+                        "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;" +
                         "[Ljava/lang/Object;)Ljava/lang/Object;",
                         (short)(ClassFileWriter.ACC_PUBLIC
                                 | ClassFileWriter.ACC_FINAL));
@@ -538,9 +538,9 @@ public class Codegen implements Evaluator
         int nonTopCallLabel = cfw.acquireLabel();
         cfw.addALoad(1); //cx
         cfw.addInvoke(ByteCode.INVOKESTATIC,
-                      "tk.eclipse.plugin.jseditor.rhino/javascript/ScriptRuntime",
+                      "jp.sf.amateras.jseditor.rhino/javascript/ScriptRuntime",
                       "hasTopCall",
-                      "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                      "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                       +")Z");
         cfw.add(ByteCode.IFNE, nonTopCallLabel);
         cfw.addALoad(0);
@@ -549,12 +549,12 @@ public class Codegen implements Evaluator
         cfw.addALoad(3);
         cfw.addALoad(4);
         cfw.addInvoke(ByteCode.INVOKESTATIC,
-                      "tk.eclipse.plugin.jseditor.rhino/javascript/ScriptRuntime",
+                      "jp.sf.amateras.jseditor.rhino/javascript/ScriptRuntime",
                       "doTopCall",
-                      "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Callable;"
-                      +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                      +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                      +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                      "(Ljp.sf.amateras.jseditor.rhino/javascript/Callable;"
+                      +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                      +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                      +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                       +"[Ljava/lang/Object;"
                       +")Ljava/lang/Object;");
         cfw.add(ByteCode.ARETURN);
@@ -648,7 +648,7 @@ public class Codegen implements Evaluator
         cfw.addInvoke(ByteCode.INVOKESTATIC,
                       mainMethodClass,
                       "main",
-                      "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Script;[Ljava/lang/String;)V");
+                      "(Ljp.sf.amateras.jseditor.rhino/javascript/Script;[Ljava/lang/String;)V");
         cfw.add(ByteCode.RETURN);
         // 1 = String[] args
         cfw.stopMethod((short)1);
@@ -657,8 +657,8 @@ public class Codegen implements Evaluator
     private void generateExecute(ClassFileWriter cfw)
     {
         cfw.startMethod("exec",
-                        "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                        +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                        "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                        +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                         +")Ljava/lang/Object;",
                         (short)(ClassFileWriter.ACC_PUBLIC
                                 | ClassFileWriter.ACC_FINAL));
@@ -674,9 +674,9 @@ public class Codegen implements Evaluator
         cfw.addInvoke(ByteCode.INVOKEVIRTUAL,
                       cfw.getClassName(),
                       "call",
-                      "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                      +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                      +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                      "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                      +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                      +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                       +"[Ljava/lang/Object;"
                       +")Ljava/lang/Object;");
 
@@ -773,10 +773,10 @@ public class Codegen implements Evaluator
         cfw.addALoad(CONTEXT_ARG);
         cfw.addALoad(SCOPE_ARG);
         cfw.addInvoke(ByteCode.INVOKEVIRTUAL,
-                      "tk.eclipse.plugin.jseditor.rhino/javascript/NativeFunction",
+                      "jp.sf.amateras.jseditor.rhino/javascript/NativeFunction",
                       "initScriptFunction",
-                      "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                      +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                      "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                      +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                       +")V");
 
         // precompile all regexp literals
@@ -1057,9 +1057,9 @@ public class Codegen implements Evaluator
                     cfw.addPush(reFlags);
                 }
                 cfw.addInvoke(ByteCode.INVOKEINTERFACE,
-                              "tk.eclipse.plugin.jseditor.rhino/javascript/RegExpProxy",
+                              "jp.sf.amateras.jseditor.rhino/javascript/RegExpProxy",
                               "compileRegExp",
-                              "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                              "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                               +"Ljava/lang/String;Ljava/lang/String;"
                               +")Ljava/lang/Object;");
                 cfw.add(ByteCode.PUTSTATIC, mainClassName,
@@ -1120,10 +1120,10 @@ public class Codegen implements Evaluator
 
         cfw.addALoad(contextArg);
         cfw.addInvoke(ByteCode.INVOKESTATIC,
-                      "tk.eclipse.plugin.jseditor.rhino/javascript/ScriptRuntime",
+                      "jp.sf.amateras.jseditor.rhino/javascript/ScriptRuntime",
                       "checkRegExpProxy",
-                      "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                      +")Ltk.eclipse.plugin.jseditor.rhino/javascript/RegExpProxy;");
+                      "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                      +")Ljp.sf.amateras.jseditor.rhino/javascript/RegExpProxy;");
         // Stack: proxy, array
         cfw.add(ByteCode.DUP);
         cfw.addALoad(contextArg);
@@ -1138,12 +1138,12 @@ public class Codegen implements Evaluator
                     getCompiledRegexpName(n, i), "Ljava/lang/Object;");
             // Stack: compiledRegExp, scope, cx, proxy, array, proxy, array
             cfw.addInvoke(ByteCode.INVOKEINTERFACE,
-                          "tk.eclipse.plugin.jseditor.rhino/javascript/RegExpProxy",
+                          "jp.sf.amateras.jseditor.rhino/javascript/RegExpProxy",
                           "wrapRegExp",
-                          "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                          +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                          "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                          +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                           +"Ljava/lang/Object;"
-                          +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                          +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
             // Stack: wrappedRegExp, array, proxy, array
             cfw.addPush(i);
             cfw.add(ByteCode.SWAP);
@@ -1160,7 +1160,7 @@ public class Codegen implements Evaluator
             if (1 / num > 0) {
                 // +0.0
                 cfw.add(ByteCode.GETSTATIC,
-                        "tk.eclipse.plugin.jseditor.rhino/javascript/optimizer/OptRuntime",
+                        "jp.sf.amateras.jseditor.rhino/javascript/optimizer/OptRuntime",
                         "zeroObj", "Ljava/lang/Double;");
             } else {
                 cfw.addPush(num);
@@ -1169,18 +1169,18 @@ public class Codegen implements Evaluator
 
         } else if (num == 1.0) {
             cfw.add(ByteCode.GETSTATIC,
-                    "tk.eclipse.plugin.jseditor.rhino/javascript/optimizer/OptRuntime",
+                    "jp.sf.amateras.jseditor.rhino/javascript/optimizer/OptRuntime",
                     "oneObj", "Ljava/lang/Double;");
             return;
 
         } else if (num == -1.0) {
             cfw.add(ByteCode.GETSTATIC,
-                    "tk.eclipse.plugin.jseditor.rhino/javascript/optimizer/OptRuntime",
+                    "jp.sf.amateras.jseditor.rhino/javascript/optimizer/OptRuntime",
                     "minusOneObj", "Ljava/lang/Double;");
 
         } else if (num != num) {
             cfw.add(ByteCode.GETSTATIC,
-                    "tk.eclipse.plugin.jseditor.rhino/javascript/ScriptRuntime",
+                    "jp.sf.amateras.jseditor.rhino/javascript/ScriptRuntime",
                     "NaNobj", "Ljava/lang/Double;");
 
         } else if (itsConstantListSize >= 2000) {
@@ -1221,7 +1221,7 @@ public class Codegen implements Evaluator
     private static void addDoubleWrap(ClassFileWriter cfw)
     {
         cfw.addInvoke(ByteCode.INVOKESTATIC,
-                      "tk.eclipse.plugin.jseditor.rhino/javascript/optimizer/OptRuntime",
+                      "jp.sf.amateras.jseditor.rhino/javascript/optimizer/OptRuntime",
                       "wrapDouble", "(D)Ljava/lang/Double;");
     }
 
@@ -1236,7 +1236,7 @@ public class Codegen implements Evaluator
     }
     static void pushUndefined(ClassFileWriter cfw)
     {
-        cfw.add(ByteCode.GETSTATIC, "tk.eclipse.plugin.jseditor.rhino/javascript/Undefined",
+        cfw.add(ByteCode.GETSTATIC, "jp.sf.amateras.jseditor.rhino/javascript/Undefined",
                 "instance", "Ljava/lang/Object;");
     }
 
@@ -1265,9 +1265,9 @@ public class Codegen implements Evaluator
         StringBuffer sb = new StringBuffer();
         sb.append('(');
         sb.append(mainClassSignature);
-        sb.append("Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                  +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                  +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+        sb.append("Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                  +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                  +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
         if (n.getType() == Token.FUNCTION) {
             OptFunctionNode ofn = OptFunctionNode.get(n);
             if (ofn.isTargetOfDirectCall()) {
@@ -1302,30 +1302,30 @@ public class Codegen implements Evaluator
      }
 
      static final String DEFAULT_MAIN_METHOD_CLASS
-        = "tk.eclipse.plugin.jseditor.rhino.javascript.optimizer.OptRuntime";
+        = "jp.sf.amateras.jseditor.rhino.javascript.optimizer.OptRuntime";
 
     private static final String SUPER_CLASS_NAME
-        = "tk.eclipse.plugin.jseditor.rhino.javascript.NativeFunction";
+        = "jp.sf.amateras.jseditor.rhino.javascript.NativeFunction";
 
     static final String DIRECT_CALL_PARENT_FIELD = "_dcp";
     private static final String ID_FIELD_NAME = "_id";
 
     private static final String REGEXP_INIT_METHOD_NAME = "_reInit";
     private static final String REGEXP_INIT_METHOD_SIGNATURE
-        =  "(Ltk.eclipse.plugin.jseditor.rhino/javascript/RegExpProxy;"
-           +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+        =  "(Ljp.sf.amateras.jseditor.rhino/javascript/RegExpProxy;"
+           +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
            +")V";
     static final String REGEXP_ARRAY_FIELD_NAME = "_re";
     static final String REGEXP_ARRAY_FIELD_TYPE = "[Ljava/lang/Object;";
 
     static final String FUNCTION_INIT_SIGNATURE
-        =  "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-           +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+        =  "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+           +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
            +")V";
 
    static final String FUNCTION_CONSTRUCTOR_SIGNATURE
-        = "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-          +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;I)V";
+        = "(Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+          +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;I)V";
 
     private static final Object globalLock = new Object();
     private static int globalSerialClassCounter;
@@ -1361,8 +1361,8 @@ class BodyCodegen
             // generator has a unique prefix followed by _gen
             String type = "(" +
                           codegen.mainClassSignature +
-                          "Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;" +
-                          "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;" +
+                          "Ljp.sf.amateras.jseditor.rhino/javascript/Context;" +
+                          "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;" +
                           "Ljava/lang/Object;" +
                           "Ljava/lang/Object;I)Ljava/lang/Object;";
             cfw.startMethod(codegen.getBodyMethodName(scriptOrFn) + "_gen",
@@ -1417,9 +1417,9 @@ class BodyCodegen
             // use the enclosing scope of the function as our variable object.
             cfw.addALoad(funObjLocal);
             cfw.addInvoke(ByteCode.INVOKEINTERFACE,
-                          "tk.eclipse.plugin.jseditor.rhino/javascript/Scriptable",
+                          "jp.sf.amateras.jseditor.rhino/javascript/Scriptable",
                           "getParentScope",
-                          "()Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                          "()Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
             cfw.addAStore(variableObjectLocal);
         }
 
@@ -1428,10 +1428,10 @@ class BodyCodegen
         cfw.addALoad(variableObjectLocal);
         cfw.addALoad(argsLocal);
         addScriptRuntimeInvoke("createFunctionActivation",
-                               "(Ltk.eclipse.plugin.jseditor.rhino/javascript/NativeFunction;"
-                               +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                               "(Ljp.sf.amateras.jseditor.rhino/javascript/NativeFunction;"
+                               +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                                +"[Ljava/lang/Object;"
-                               +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                               +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
         cfw.addAStore(variableObjectLocal);
 
         // create a function object
@@ -1465,10 +1465,10 @@ class BodyCodegen
         cfw.addLoadConstant(maxLocals);
         cfw.addLoadConstant(maxStack);
         addOptRuntimeInvoke("createNativeGenerator",
-                               "(Ltk.eclipse.plugin.jseditor.rhino/javascript/NativeFunction;"
-                               +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                               +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;II"
-                               +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                               "(Ljp.sf.amateras.jseditor.rhino/javascript/NativeFunction;"
+                               +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                               +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;II"
+                               +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
 
         cfw.add(ByteCode.ARETURN);
         cfw.stopMethod((short)(localsMax + 1));
@@ -1573,9 +1573,9 @@ class BodyCodegen
             // use the enclosing scope of the function as our variable object.
             cfw.addALoad(funObjLocal);
             cfw.addInvoke(ByteCode.INVOKEINTERFACE,
-                          "tk.eclipse.plugin.jseditor.rhino/javascript/Scriptable",
+                          "jp.sf.amateras.jseditor.rhino/javascript/Scriptable",
                           "getParentScope",
-                          "()Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                          "()Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
             cfw.addAStore(variableObjectLocal);
         }
 
@@ -1725,16 +1725,16 @@ class BodyCodegen
             cfw.addALoad(variableObjectLocal);
             cfw.addALoad(argsLocal);
             addScriptRuntimeInvoke("createFunctionActivation",
-                                   "(Ltk.eclipse.plugin.jseditor.rhino/javascript/NativeFunction;"
-                                   +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                                   "(Ljp.sf.amateras.jseditor.rhino/javascript/NativeFunction;"
+                                   +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                                    +"[Ljava/lang/Object;"
-                                   +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                                   +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
             cfw.addAStore(variableObjectLocal);
             cfw.addALoad(contextLocal);
             cfw.addALoad(variableObjectLocal);
             addScriptRuntimeInvoke("enterActivationFunction",
-                                   "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                                   +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                                   "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                                   +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                                    +")V");
         } else {
             debugVariableName = "global";
@@ -1744,10 +1744,10 @@ class BodyCodegen
             cfw.addALoad(variableObjectLocal);
             cfw.addPush(0); // false to indicate it is not eval script
             addScriptRuntimeInvoke("initScript",
-                                   "(Ltk.eclipse.plugin.jseditor.rhino/javascript/NativeFunction;"
-                                   +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                                   +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                                   +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                                   "(Ljp.sf.amateras.jseditor.rhino/javascript/NativeFunction;"
+                                   +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                                   +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                                   +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                                    +"Z"
                                    +")V");
         }
@@ -1761,7 +1761,7 @@ class BodyCodegen
         // default is to generate debug info
         if (compilerEnv.isGenerateDebugInfo()) {
             cfw.addVariableDescriptor(debugVariableName,
-                    "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;",
+                    "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;",
                     cfw.getCurrentCodeOffset(), variableObjectLocal);
         }
 
@@ -1779,7 +1779,7 @@ class BodyCodegen
             if (fnCurrent.itsContainsCalls0) {
                 itsZeroArgArray = getNewWordLocal();
                 cfw.add(ByteCode.GETSTATIC,
-                        "tk.eclipse.plugin.jseditor.rhino/javascript/ScriptRuntime",
+                        "jp.sf.amateras.jseditor.rhino/javascript/ScriptRuntime",
                         "emptyArgs", "[Ljava/lang/Object;");
                 cfw.addAStore(itsZeroArgArray);
             }
@@ -1935,7 +1935,7 @@ class BodyCodegen
         if (fnCurrent == null || hasVarsInRegs) throw Kit.codeBug();
         cfw.addALoad(contextLocal);
         addScriptRuntimeInvoke("exitActivationFunction",
-                               "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;)V");
+                               "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;)V");
     }
 
     private void generateStatement(Node node)
@@ -2021,11 +2021,11 @@ class BodyCodegen
                     addScriptRuntimeInvoke(
                         "newCatchScope",
                         "(Ljava/lang/Throwable;"
-                        +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                        +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                         +"Ljava/lang/String;"
-                        +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                        +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                        +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                        +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                        +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                        +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
                     cfw.addAStore(local);
                 }
                 break;
@@ -2078,9 +2078,9 @@ class BodyCodegen
                 addScriptRuntimeInvoke(
                     "enterWith",
                     "(Ljava/lang/Object;"
-                    +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                    +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                    +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                    +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                    +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                    +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
                 cfw.addAStore(variableObjectLocal);
                 incReferenceWordLocal(variableObjectLocal);
                 break;
@@ -2089,8 +2089,8 @@ class BodyCodegen
                 cfw.addALoad(variableObjectLocal);
                 addScriptRuntimeInvoke(
                     "leaveWith",
-                    "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                    +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                    "(Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                    +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
                 cfw.addAStore(variableObjectLocal);
                 decReferenceWordLocal(variableObjectLocal);
                 break;
@@ -2108,7 +2108,7 @@ class BodyCodegen
                 cfw.addPush(enumType);
                 addScriptRuntimeInvoke("enumInit",
                                        "(Ljava/lang/Object;"
-                                       +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                                       +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                                        +"I"
                                        +")Ljava/lang/Object;");
                 cfw.addAStore(getLocalBlockRegister(node));
@@ -2223,14 +2223,14 @@ class BodyCodegen
     private void generateThrowJavaScriptException()
     {
         cfw.add(ByteCode.NEW,
-                        "tk.eclipse.plugin.jseditor.rhino/javascript/JavaScriptException");
+                        "jp.sf.amateras.jseditor.rhino/javascript/JavaScriptException");
         cfw.add(ByteCode.DUP_X1);
         cfw.add(ByteCode.SWAP);
         cfw.addPush(scriptOrFn.getSourceName());
         cfw.addPush(itsLineNumber);
         cfw.addInvoke(
                     ByteCode.INVOKESPECIAL,
-                    "tk.eclipse.plugin.jseditor.rhino/javascript/JavaScriptException",
+                    "jp.sf.amateras.jseditor.rhino/javascript/JavaScriptException",
                     "<init>",
                     "(Ljava/lang/Object;Ljava/lang/String;I)V");
         cfw.add(ByteCode.ATHROW);
@@ -2271,8 +2271,8 @@ class BodyCodegen
                     cfw.addPush(node.getString());
                     addScriptRuntimeInvoke(
                         "name",
-                        "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                        +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                        "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                        +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                         +"Ljava/lang/String;"
                         +")Ljava/lang/Object;");
                 }
@@ -2309,11 +2309,11 @@ class BodyCodegen
                 cfw.addALoad(contextLocal);
                 addScriptRuntimeInvoke(
                     "callRef",
-                    "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Callable;"
-                    +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                    "(Ljp.sf.amateras.jseditor.rhino/javascript/Callable;"
+                    +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                     +"[Ljava/lang/Object;"
-                    +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                    +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Ref;");
+                    +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                    +")Ljp.sf.amateras.jseditor.rhino/javascript/Ref;");
                 break;
 
               case Token.NUMBER:
@@ -2397,7 +2397,7 @@ class BodyCodegen
                     cfw.addALoad(contextLocal);
                     addScriptRuntimeInvoke("enumId",
                                            "(Ljava/lang/Object;"
-                                           +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                                           +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                                            +")Ljava/lang/Object;");
                 }
                 break;
@@ -2526,7 +2526,7 @@ class BodyCodegen
                             addScriptRuntimeInvoke("add",
                                 "(Ljava/lang/Object;"
                                 +"Ljava/lang/Object;"
-                                +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                                +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                                 +")Ljava/lang/Object;");
                         }
                     }
@@ -2627,7 +2627,7 @@ class BodyCodegen
                     addScriptRuntimeInvoke(
                         "getObjectIndex",
                         "(Ljava/lang/Object;D"
-                        +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                        +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                         +")Ljava/lang/Object;");
                 }
                 else {
@@ -2636,8 +2636,8 @@ class BodyCodegen
                         "getObjectElem",
                         "(Ljava/lang/Object;"
                         +"Ljava/lang/Object;"
-                        +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                        +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                        +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                        +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                         +")Ljava/lang/Object;");
                 }
                 break;
@@ -2647,8 +2647,8 @@ class BodyCodegen
                 cfw.addALoad(contextLocal);
                 addScriptRuntimeInvoke(
                     "refGet",
-                    "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Ref;"
-                    +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                    "(Ljp.sf.amateras.jseditor.rhino/javascript/Ref;"
+                    +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                     +")Ljava/lang/Object;");
                 break;
 
@@ -2692,17 +2692,17 @@ class BodyCodegen
                         cfw.addALoad(contextLocal);
                         addScriptRuntimeInvoke(
                             "refGet",
-                            "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Ref;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                            "(Ljp.sf.amateras.jseditor.rhino/javascript/Ref;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                             +")Ljava/lang/Object;");
                     }
                     generateExpression(child, node);
                     cfw.addALoad(contextLocal);
                     addScriptRuntimeInvoke(
                         "refSet",
-                        "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Ref;"
+                        "(Ljp.sf.amateras.jseditor.rhino/javascript/Ref;"
                         +"Ljava/lang/Object;"
-                        +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                        +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                         +")Ljava/lang/Object;");
                 }
                 break;
@@ -2711,8 +2711,8 @@ class BodyCodegen
                 generateExpression(child, node);
                 cfw.addALoad(contextLocal);
                 addScriptRuntimeInvoke("refDel",
-                                       "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Ref;"
-                                       +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                                       "(Ljp.sf.amateras.jseditor.rhino/javascript/Ref;"
+                                       +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                                        +")Ljava/lang/Object;");
                 break;
 
@@ -2724,7 +2724,7 @@ class BodyCodegen
                 addScriptRuntimeInvoke("delete",
                                        "(Ljava/lang/Object;"
                                        +"Ljava/lang/Object;"
-                                       +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                                       +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                                        +")Ljava/lang/Object;");
                 break;
 
@@ -2740,10 +2740,10 @@ class BodyCodegen
                     cfw.addPush(node.getString());
                     addScriptRuntimeInvoke(
                         "bind",
-                        "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                        +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                        "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                        +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                         +"Ljava/lang/String;"
-                        +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                        +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
                 }
                 break;
 
@@ -2761,8 +2761,8 @@ class BodyCodegen
                         "specialRef",
                         "(Ljava/lang/Object;"
                         +"Ljava/lang/String;"
-                        +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                        +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Ref;");
+                        +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                        +")Ljp.sf.amateras.jseditor.rhino/javascript/Ref;");
                 }
                 break;
 
@@ -2785,35 +2785,35 @@ class BodyCodegen
                         methodName = "memberRef";
                         signature = "(Ljava/lang/Object;"
                                     +"Ljava/lang/Object;"
-                                    +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                                    +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                                     +"I"
-                                    +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Ref;";
+                                    +")Ljp.sf.amateras.jseditor.rhino/javascript/Ref;";
                         break;
                       case Token.REF_NS_MEMBER:
                         methodName = "memberRef";
                         signature = "(Ljava/lang/Object;"
                                     +"Ljava/lang/Object;"
                                     +"Ljava/lang/Object;"
-                                    +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                                    +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                                     +"I"
-                                    +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Ref;";
+                                    +")Ljp.sf.amateras.jseditor.rhino/javascript/Ref;";
                         break;
                       case Token.REF_NAME:
                         methodName = "nameRef";
                         signature = "(Ljava/lang/Object;"
-                                    +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                                    +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                                    +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                                    +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                                     +"I"
-                                    +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Ref;";
+                                    +")Ljp.sf.amateras.jseditor.rhino/javascript/Ref;";
                         cfw.addALoad(variableObjectLocal);
                         break;
                       case Token.REF_NS_NAME:
                         methodName = "nameRef";
                         signature = "(Ljava/lang/Object;"
-                                    +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                                    +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                                    +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                                    +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                                     +"I"
-                                    +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Ref;";
+                                    +")Ljp.sf.amateras.jseditor.rhino/javascript/Ref;";
                         cfw.addALoad(variableObjectLocal);
                         break;
                       default:
@@ -2833,7 +2833,7 @@ class BodyCodegen
                 cfw.addALoad(contextLocal);
                 addScriptRuntimeInvoke("escapeAttributeValue",
                                        "(Ljava/lang/Object;"
-                                       +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                                       +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                                        +")Ljava/lang/String;");
                 break;
 
@@ -2842,7 +2842,7 @@ class BodyCodegen
                 cfw.addALoad(contextLocal);
                 addScriptRuntimeInvoke("escapeTextValue",
                                        "(Ljava/lang/Object;"
-                                       +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                                       +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                                        +")Ljava/lang/String;");
                 break;
 
@@ -2851,7 +2851,7 @@ class BodyCodegen
                 cfw.addALoad(contextLocal);
                 addScriptRuntimeInvoke("setDefaultNamespace",
                                        "(Ljava/lang/Object;"
-                                       +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                                       +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                                        +")Ljava/lang/Object;");
                 break;
 
@@ -3080,10 +3080,10 @@ class BodyCodegen
         cfw.addALoad(variableObjectLocal);
         cfw.addALoad(contextLocal);           // load 'cx'
         addOptRuntimeInvoke("initFunction",
-                            "(Ltk.eclipse.plugin.jseditor.rhino/javascript/NativeFunction;"
+                            "(Ljp.sf.amateras.jseditor.rhino/javascript/NativeFunction;"
                             +"I"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                             +")V");
     }
 
@@ -3160,9 +3160,9 @@ class BodyCodegen
              "([Ljava/lang/Object;"
              +"Ljava/lang/String;"
              +"I"
-             +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-             +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-             +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+             +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+             +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+             +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
     }
 
     private void visitObjectLiteral(Node node, Node child)
@@ -3225,9 +3225,9 @@ class BodyCodegen
              "([Ljava/lang/Object;"
              +"[Ljava/lang/Object;"
              +"[I"
-             +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-             +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-             +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+             +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+             +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+             +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
     }
 
     private void visitSpecialCall(Node node, int type, int specialType,
@@ -3251,11 +3251,11 @@ class BodyCodegen
 
         if (type == Token.NEW) {
             methodName = "newObjectSpecial";
-            callSignature = "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+            callSignature = "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                             +"Ljava/lang/Object;"
                             +"[Ljava/lang/Object;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                             +"I" // call type
                             +")Ljava/lang/Object;";
             cfw.addALoad(variableObjectLocal);
@@ -3263,12 +3263,12 @@ class BodyCodegen
             cfw.addPush(specialType);
         } else {
             methodName = "callSpecial";
-            callSignature = "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Callable;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+            callSignature = "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Callable;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                             +"[Ljava/lang/Object;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                             +"I" // call type
                             +"Ljava/lang/String;I"  // filename, linenumber
                             +")Ljava/lang/Object;";
@@ -3300,8 +3300,8 @@ class BodyCodegen
                 cfw.addPush(name);
                 methodName = "callName0";
                 signature = "(Ljava/lang/String;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                             +")Ljava/lang/Object;";
             } else if (childType == Token.GETPROP) {
                 // x.name() call
@@ -3313,18 +3313,18 @@ class BodyCodegen
                 methodName = "callProp0";
                 signature = "(Ljava/lang/Object;"
                             +"Ljava/lang/String;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                             +")Ljava/lang/Object;";
             } else if (childType == Token.GETPROPNOWARN) {
                 throw Kit.codeBug();
             } else {
                 generateFunctionAndThisObj(child, node);
                 methodName = "call0";
-                signature = "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Callable;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                signature = "(Ljp.sf.amateras.jseditor.rhino/javascript/Callable;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                             +")Ljava/lang/Object;";
             }
 
@@ -3339,8 +3339,8 @@ class BodyCodegen
             methodName = "callName";
             signature = "([Ljava/lang/Object;"
                         +"Ljava/lang/String;"
-                        +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                        +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                        +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                        +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                         +")Ljava/lang/Object;";
         } else {
             int argCount = 0;
@@ -3352,31 +3352,31 @@ class BodyCodegen
             if (argCount == 1) {
                 generateExpression(firstArgChild, node);
                 methodName = "call1";
-                signature = "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Callable;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                signature = "(Ljp.sf.amateras.jseditor.rhino/javascript/Callable;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                             +"Ljava/lang/Object;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                             +")Ljava/lang/Object;";
             } else if (argCount == 2) {
                 generateExpression(firstArgChild, node);
                 generateExpression(firstArgChild.getNext(), node);
                 methodName = "call2";
-                signature = "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Callable;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                signature = "(Ljp.sf.amateras.jseditor.rhino/javascript/Callable;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                             +"Ljava/lang/Object;"
                             +"Ljava/lang/Object;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                             +")Ljava/lang/Object;";
             } else {
                 generateCallArgArray(node, firstArgChild, false);
                 methodName = "callN";
-                signature = "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Callable;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                signature = "(Ljp.sf.amateras.jseditor.rhino/javascript/Callable;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                             +"[Ljava/lang/Object;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                            +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                             +")Ljava/lang/Object;";
             }
         }
@@ -3401,10 +3401,10 @@ class BodyCodegen
         addScriptRuntimeInvoke(
             "newObject",
             "(Ljava/lang/Object;"
-            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+            +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+            +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
             +"[Ljava/lang/Object;"
-            +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+            +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
     }
 
     private void visitOptimizedCall(Node node, OptFunctionNode target,
@@ -3455,9 +3455,9 @@ class BodyCodegen
             cfw.add(ByteCode.DUP);
             // stack: ... directFunct directFunct
             cfw.addInvoke(ByteCode.INVOKEINTERFACE,
-                          "tk.eclipse.plugin.jseditor.rhino/javascript/Scriptable",
+                          "jp.sf.amateras.jseditor.rhino/javascript/Scriptable",
                           "getParentScope",
-                          "()Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                          "()Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
             // stack: ... directFunct scope
             cfw.addALoad(contextLocal);
             // stack: ... directFunct scope cx
@@ -3500,7 +3500,7 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
         }
 
         cfw.add(ByteCode.GETSTATIC,
-                "tk.eclipse.plugin.jseditor.rhino/javascript/ScriptRuntime",
+                "jp.sf.amateras.jseditor.rhino/javascript/ScriptRuntime",
                 "emptyArgs", "[Ljava/lang/Object;");
         cfw.addInvoke(ByteCode.INVOKESTATIC,
                       codegen.mainClassName,
@@ -3530,17 +3530,17 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
             addScriptRuntimeInvoke(
                 "newObject",
                 "(Ljava/lang/Object;"
-                +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                 +"[Ljava/lang/Object;"
-                +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
         } else {
             cfw.addInvoke(ByteCode.INVOKEINTERFACE,
-                "tk.eclipse.plugin.jseditor.rhino/javascript/Callable",
+                "jp.sf.amateras.jseditor.rhino/javascript/Callable",
                 "call",
-                "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                 +"[Ljava/lang/Object;"
                 +")Ljava/lang/Object;");
         }
@@ -3632,9 +3632,9 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
                     "getPropFunctionAndThis",
                     "(Ljava/lang/Object;"
                     +"Ljava/lang/String;"
-                    +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                    +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                    +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Callable;");
+                    +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                    +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                    +")Ljp.sf.amateras.jseditor.rhino/javascript/Callable;");
             } else {
                 // Optimizer do not optimize this case for now
                 if (node.getIntProp(Node.ISNUMBER_PROP, -1) != -1)
@@ -3645,8 +3645,8 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
                     "getElemFunctionAndThis",
                     "(Ljava/lang/Object;"
                     +"Ljava/lang/Object;"
-                    +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                    +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Callable;");
+                    +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                    +")Ljp.sf.amateras.jseditor.rhino/javascript/Callable;");
             }
             break;
           }
@@ -3659,9 +3659,9 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
             addScriptRuntimeInvoke(
                 "getNameFunctionAndThis",
                 "(Ljava/lang/String;"
-                +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Callable;");
+                +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                +")Ljp.sf.amateras.jseditor.rhino/javascript/Callable;");
             break;
           }
 
@@ -3671,16 +3671,16 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
             addScriptRuntimeInvoke(
                 "getValueFunctionAndThis",
                 "(Ljava/lang/Object;"
-                +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Callable;");
+                +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                +")Ljp.sf.amateras.jseditor.rhino/javascript/Callable;");
             break;
         }
         // Get thisObj prepared by get(Name|Prop|Elem|Value)FunctionAndThis
         cfw.addALoad(contextLocal);
         addScriptRuntimeInvoke(
             "lastStoredScriptable",
-            "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-            +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+            "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+            +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
     }
 
     private void updateLineNumber(Node node)
@@ -3827,11 +3827,11 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
 
         String exceptionName;
         if (exceptionType == JAVASCRIPT_EXCEPTION) {
-            exceptionName = "tk.eclipse.plugin.jseditor.rhino/javascript/JavaScriptException";
+            exceptionName = "jp.sf.amateras.jseditor.rhino/javascript/JavaScriptException";
         } else if (exceptionType == EVALUATOR_EXCEPTION) {
-            exceptionName = "tk.eclipse.plugin.jseditor.rhino/javascript/EvaluatorException";
+            exceptionName = "jp.sf.amateras.jseditor.rhino/javascript/EvaluatorException";
         } else if (exceptionType == ECMAERROR_EXCEPTION) {
-            exceptionName = "tk.eclipse.plugin.jseditor.rhino/javascript/EcmaError";
+            exceptionName = "jp.sf.amateras.jseditor.rhino/javascript/EcmaError";
         } else if (exceptionType == THROWABLE_EXCEPTION) {
             exceptionName = "java/lang/Throwable";
         } else {
@@ -3953,7 +3953,7 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
         cfw.addALoad(variableObjectLocal);
         cfw.addPush(node.getString());
         addScriptRuntimeInvoke("typeofName",
-                               "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                               "(Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                                +"Ljava/lang/String;"
                                +")Ljava/lang/String;");
     }
@@ -3992,7 +3992,7 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
         cfw.addALoad(contextLocal);
         cfw.addPush(count);
         addScriptRuntimeInvoke("addInstructionCount",
-                "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                "(Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                 +"I)V");
     }
 
@@ -4051,9 +4051,9 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
             cfw.addALoad(contextLocal);
             cfw.addPush(incrDecrMask);
             addScriptRuntimeInvoke("nameIncrDecr",
-                "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                "(Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                 +"Ljava/lang/String;"
-                +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                 +"I)Ljava/lang/Object;");
             break;
           case Token.GETPROPNOWARN:
@@ -4067,7 +4067,7 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
             addScriptRuntimeInvoke("propIncrDecr",
                                    "(Ljava/lang/Object;"
                                    +"Ljava/lang/String;"
-                                   +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                                   +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                                    +"I)Ljava/lang/Object;");
             break;
           }
@@ -4081,14 +4081,14 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
               addOptRuntimeInvoke("elemIncrDecr",
                   "(Ljava/lang/Object;"
                   +"D"
-                  +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                  +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                   +"I"
                   +")Ljava/lang/Object;");
             } else {
               addScriptRuntimeInvoke("elemIncrDecr",
                   "(Ljava/lang/Object;"
                   +"Ljava/lang/Object;"
-                  +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                  +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                   +"I"
                   +")Ljava/lang/Object;");
             }
@@ -4101,8 +4101,8 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
             cfw.addPush(incrDecrMask);
             addScriptRuntimeInvoke(
                 "refIncrDecr",
-                "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Ref;"
-                +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                "(Ljp.sf.amateras.jseditor.rhino/javascript/Ref;"
+                +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                 +"I)Ljava/lang/Object;");
             break;
           }
@@ -4261,7 +4261,7 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
                 (type == Token.INSTANCEOF) ? "instanceOf" : "in",
                 "(Ljava/lang/Object;"
                 +"Ljava/lang/Object;"
-                +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                 +")Z");
             cfw.add(ByteCode.IFNE, trueGOTO);
             cfw.add(ByteCode.GOTO, falseGOTO);
@@ -4464,10 +4464,10 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
         cfw.addPush(name);
         addScriptRuntimeInvoke(
             "setName",
-            "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+            "(Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
             +"Ljava/lang/Object;"
-            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+            +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+            +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
             +"Ljava/lang/String;"
             +")Ljava/lang/Object;");
     }
@@ -4483,9 +4483,9 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
         cfw.addPush(name);
         addScriptRuntimeInvoke(
             "setConst",
-            "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+            "(Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
             +"Ljava/lang/Object;"
-            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+            +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
             +"Ljava/lang/String;"
             +")Ljava/lang/Object;");
     }
@@ -4627,7 +4627,7 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
                 "getObjectPropNoWarn",
                 "(Ljava/lang/Object;"
                 +"Ljava/lang/String;"
-                +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                 +")Ljava/lang/Object;");
             return;
         }
@@ -4640,9 +4640,9 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
             cfw.addALoad(contextLocal);
             addScriptRuntimeInvoke(
                 "getObjectProp",
-                "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                "(Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                 +"Ljava/lang/String;"
-                +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                 +")Ljava/lang/Object;");
         } else {
             cfw.addALoad(contextLocal);
@@ -4651,8 +4651,8 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
                 "getObjectProp",
                 "(Ljava/lang/Object;"
                 +"Ljava/lang/String;"
-                +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
-                +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
+                +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                 +")Ljava/lang/Object;");
         }
     }
@@ -4679,9 +4679,9 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
                 cfw.addALoad(contextLocal);
                 addScriptRuntimeInvoke(
                     "getObjectProp",
-                    "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                    "(Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                     +"Ljava/lang/String;"
-                    +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                    +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                     +")Ljava/lang/Object;");
             } else {
                 cfw.addALoad(contextLocal);
@@ -4689,7 +4689,7 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
                     "getObjectProp",
                     "(Ljava/lang/Object;"
                     +"Ljava/lang/String;"
-                    +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                    +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                     +")Ljava/lang/Object;");
             }
         }
@@ -4700,7 +4700,7 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
             "(Ljava/lang/Object;"
             +"Ljava/lang/String;"
             +"Ljava/lang/Object;"
-            +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+            +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
             +")Ljava/lang/Object;");
     }
 
@@ -4723,7 +4723,7 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
                 addOptRuntimeInvoke(
                     "getObjectIndex",
                     "(Ljava/lang/Object;D"
-                    +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                    +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                     +")Ljava/lang/Object;");
             } else {
                 // stack: ... object object indexObject
@@ -4734,7 +4734,7 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
                     "getObjectElem",
                     "(Ljava/lang/Object;"
                     +"Ljava/lang/Object;"
-                    +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                    +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                     +")Ljava/lang/Object;");
             }
         }
@@ -4746,7 +4746,7 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
                 "(Ljava/lang/Object;"
                 +"D"
                 +"Ljava/lang/Object;"
-                +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                 +")Ljava/lang/Object;");
         } else {
             addScriptRuntimeInvoke(
@@ -4754,7 +4754,7 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
                 "(Ljava/lang/Object;"
                 +"Ljava/lang/Object;"
                 +"Ljava/lang/Object;"
-                +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Context;"
+                +"Ljp.sf.amateras.jseditor.rhino/javascript/Context;"
                 +")Ljava/lang/Object;");
         }
     }
@@ -4766,8 +4766,8 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
         cfw.addALoad(variableObjectLocal);
         addScriptRuntimeInvoke("enterDotQuery",
                                "(Ljava/lang/Object;"
-                               +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                               +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                               +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                               +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
         cfw.addAStore(variableObjectLocal);
 
         // add push null/pop with label in between to simplify code for loop
@@ -4783,15 +4783,15 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
         cfw.addALoad(variableObjectLocal);
         addScriptRuntimeInvoke("updateDotQuery",
                                "(Z"
-                               +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                               +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                                +")Ljava/lang/Object;");
         cfw.add(ByteCode.DUP);
         cfw.add(ByteCode.IFNULL, queryLoopStart);
         // stack: ... non_null_result_of_updateDotQuery
         cfw.addALoad(variableObjectLocal);
         addScriptRuntimeInvoke("leaveDotQuery",
-                               "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                               +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                               "(Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                               +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
         cfw.addAStore(variableObjectLocal);
     }
 
@@ -4858,7 +4858,7 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
                 cfw.addALoad(itsZeroArgArray);
             } else {
                 cfw.add(ByteCode.GETSTATIC,
-                        "tk.eclipse.plugin.jseditor.rhino/javascript/ScriptRuntime",
+                        "jp.sf.amateras.jseditor.rhino/javascript/ScriptRuntime",
                         "emptyArgs", "[Ljava/lang/Object;");
             }
         } else {
@@ -4871,7 +4871,7 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
                                         String methodSignature)
     {
         cfw.addInvoke(ByteCode.INVOKESTATIC,
-                      "tk.eclipse.plugin.jseditor.rhino.javascript.ScriptRuntime",
+                      "jp.sf.amateras.jseditor.rhino.javascript.ScriptRuntime",
                       methodName,
                       methodSignature);
     }
@@ -4880,7 +4880,7 @@ Else pass the JS object in the aReg and 0.0 in the dReg.
                                      String methodSignature)
     {
         cfw.addInvoke(ByteCode.INVOKESTATIC,
-                      "tk.eclipse.plugin.jseditor.rhino/javascript/optimizer/OptRuntime",
+                      "jp.sf.amateras.jseditor.rhino/javascript/optimizer/OptRuntime",
                       methodName,
                       methodSignature);
     }

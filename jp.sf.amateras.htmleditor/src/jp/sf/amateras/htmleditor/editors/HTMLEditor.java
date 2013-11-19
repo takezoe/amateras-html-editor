@@ -28,8 +28,8 @@ import org.eclipse.ui.part.EditorPart;
  * and in the split style, uses SplitPageHTMLEditor.
  * And this class transfers the call of most methods to them.
  * 
- * @see tk.eclipse.plugin.htmleditor.editors.MultiPageHTMLEditor
- * @see tk.eclipse.plugin.htmleditor.editors.SplitPageHTMLEditor
+ * @see jp.sf.amateras.htmleditor.editors.MultiPageHTMLEditor
+ * @see jp.sf.amateras.htmleditor.editors.SplitPageHTMLEditor
  */
 public class HTMLEditor extends EditorPart implements IPaletteTarget {
 	

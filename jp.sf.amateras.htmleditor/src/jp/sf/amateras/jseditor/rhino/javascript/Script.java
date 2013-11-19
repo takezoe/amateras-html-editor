@@ -66,7 +66,7 @@ public interface Script {
      * @param cx the Context associated with the current thread
      * @param scope the scope to execute relative to
      * @return the result of executing the script
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Context#initStandardObjects()
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Context#initStandardObjects()
      */
     public Object exec(Context cx, Scriptable scope);
 

@@ -345,13 +345,13 @@ public final class JavaAdapter implements IdFunctionCall
         ClassFileWriter cfw = new ClassFileWriter(adapterName,
                                                   superClass.getName(),
                                                   "<adapter>");
-        cfw.addField("factory", "Ltk.eclipse.plugin.jseditor.rhino/javascript/ContextFactory;",
+        cfw.addField("factory", "Ljp.sf.amateras.jseditor.rhino/javascript/ContextFactory;",
                      (short) (ClassFileWriter.ACC_PUBLIC |
                               ClassFileWriter.ACC_FINAL));
-        cfw.addField("delegee", "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;",
+        cfw.addField("delegee", "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;",
                      (short) (ClassFileWriter.ACC_PUBLIC |
                               ClassFileWriter.ACC_FINAL));
-        cfw.addField("self", "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;",
+        cfw.addField("self", "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;",
                      (short) (ClassFileWriter.ACC_PUBLIC |
                               ClassFileWriter.ACC_FINAL));
         int interfacesCount = interfaces == null ? 0 : interfaces.length;
@@ -605,8 +605,8 @@ public final class JavaAdapter implements IdFunctionCall
                                      String superName)
     {
         cfw.startMethod("<init>",
-                        "(Ltk.eclipse.plugin.jseditor.rhino/javascript/ContextFactory;"
-                        +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;)V",
+                        "(Ljp.sf.amateras.jseditor.rhino/javascript/ContextFactory;"
+                        +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;)V",
                         ClassFileWriter.ACC_PUBLIC);
 
         // Invoke base class constructor
@@ -617,26 +617,26 @@ public final class JavaAdapter implements IdFunctionCall
         cfw.add(ByteCode.ALOAD_0);  // this
         cfw.add(ByteCode.ALOAD_1);  // first arg: ContextFactory instance
         cfw.add(ByteCode.PUTFIELD, adapterName, "factory",
-                "Ltk.eclipse.plugin.jseditor.rhino/javascript/ContextFactory;");
+                "Ljp.sf.amateras.jseditor.rhino/javascript/ContextFactory;");
 
         // Save parameter in instance variable "delegee"
         cfw.add(ByteCode.ALOAD_0);  // this
         cfw.add(ByteCode.ALOAD_2);  // second arg: Scriptable delegee
         cfw.add(ByteCode.PUTFIELD, adapterName, "delegee",
-                "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
 
         cfw.add(ByteCode.ALOAD_0);  // this for the following PUTFIELD for self
         // create a wrapper object to be used as "this" in method calls
         cfw.add(ByteCode.ALOAD_2);  // the Scriptable delegee
         cfw.add(ByteCode.ALOAD_0);  // this
         cfw.addInvoke(ByteCode.INVOKESTATIC,
-                      "tk.eclipse.plugin.jseditor.rhino/javascript/JavaAdapter",
+                      "jp.sf.amateras.jseditor.rhino/javascript/JavaAdapter",
                       "createAdapterWrapper",
-                      "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                      "(Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                       +"Ljava/lang/Object;"
-                      +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                      +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
         cfw.add(ByteCode.PUTFIELD, adapterName, "self",
-                "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
 
         cfw.add(ByteCode.RETURN);
         cfw.stopMethod((short)3); // 3: this + factory + delegee
@@ -647,9 +647,9 @@ public final class JavaAdapter implements IdFunctionCall
                                            String superName)
     {
         cfw.startMethod("<init>",
-                        "(Ltk.eclipse.plugin.jseditor.rhino/javascript/ContextFactory;"
-                        +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                        +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                        "(Ljp.sf.amateras.jseditor.rhino/javascript/ContextFactory;"
+                        +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                        +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                         +")V",
                         ClassFileWriter.ACC_PUBLIC);
 
@@ -661,18 +661,18 @@ public final class JavaAdapter implements IdFunctionCall
         cfw.add(ByteCode.ALOAD_0);  // this
         cfw.add(ByteCode.ALOAD_1);  // first arg: ContextFactory instance
         cfw.add(ByteCode.PUTFIELD, adapterName, "factory",
-                "Ltk.eclipse.plugin.jseditor.rhino/javascript/ContextFactory;");
+                "Ljp.sf.amateras.jseditor.rhino/javascript/ContextFactory;");
 
         // Save parameter in instance variable "delegee"
         cfw.add(ByteCode.ALOAD_0);  // this
         cfw.add(ByteCode.ALOAD_2);  // second arg: Scriptable delegee
         cfw.add(ByteCode.PUTFIELD, adapterName, "delegee",
-                "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
         // save self
         cfw.add(ByteCode.ALOAD_0);  // this
         cfw.add(ByteCode.ALOAD_3);  // second arg: Scriptable self
         cfw.add(ByteCode.PUTFIELD, adapterName, "self",
-                "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
 
         cfw.add(ByteCode.RETURN);
         cfw.stopMethod((short)4); // 4: this + factory + delegee + self
@@ -693,7 +693,7 @@ public final class JavaAdapter implements IdFunctionCall
         cfw.add(ByteCode.ALOAD_0);
         cfw.add(ByteCode.ACONST_NULL);
         cfw.add(ByteCode.PUTFIELD, adapterName, "factory",
-                "Ltk.eclipse.plugin.jseditor.rhino/javascript/ContextFactory;");
+                "Ljp.sf.amateras.jseditor.rhino/javascript/ContextFactory;");
 
         // Load script class
         cfw.add(ByteCode.NEW, scriptClassName);
@@ -702,30 +702,30 @@ public final class JavaAdapter implements IdFunctionCall
 
         // Run script and save resulting scope
         cfw.addInvoke(ByteCode.INVOKESTATIC,
-                      "tk.eclipse.plugin.jseditor.rhino/javascript/JavaAdapter",
+                      "jp.sf.amateras.jseditor.rhino/javascript/JavaAdapter",
                       "runScript",
-                      "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Script;"
-                      +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                      "(Ljp.sf.amateras.jseditor.rhino/javascript/Script;"
+                      +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
         cfw.add(ByteCode.ASTORE_1);
 
         // Save the Scriptable in instance variable "delegee"
         cfw.add(ByteCode.ALOAD_0);  // this
         cfw.add(ByteCode.ALOAD_1);  // the Scriptable
         cfw.add(ByteCode.PUTFIELD, adapterName, "delegee",
-                "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
 
         cfw.add(ByteCode.ALOAD_0);  // this for the following PUTFIELD for self
         // create a wrapper object to be used as "this" in method calls
         cfw.add(ByteCode.ALOAD_1);  // the Scriptable
         cfw.add(ByteCode.ALOAD_0);  // this
         cfw.addInvoke(ByteCode.INVOKESTATIC,
-                      "tk.eclipse.plugin.jseditor.rhino/javascript/JavaAdapter",
+                      "jp.sf.amateras.jseditor.rhino/javascript/JavaAdapter",
                       "createAdapterWrapper",
-                      "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                      "(Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                       +"Ljava/lang/Object;"
-                      +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                      +")Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
         cfw.add(ByteCode.PUTFIELD, adapterName, "self",
-                "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
 
         cfw.add(ByteCode.RETURN);
         cfw.stopMethod((short)2); // this + delegee
@@ -829,7 +829,7 @@ public final class JavaAdapter implements IdFunctionCall
 
         } else if (retType == Boolean.TYPE) {
             cfw.addInvoke(ByteCode.INVOKESTATIC,
-                          "tk.eclipse.plugin.jseditor.rhino/javascript/Context",
+                          "jp.sf.amateras.jseditor.rhino/javascript/Context",
                           "toBoolean", "(Ljava/lang/Object;)Z");
             cfw.add(ByteCode.IRETURN);
 
@@ -838,7 +838,7 @@ public final class JavaAdapter implements IdFunctionCall
             // return the first character.
             // first convert the value to a string if possible.
             cfw.addInvoke(ByteCode.INVOKESTATIC,
-                          "tk.eclipse.plugin.jseditor.rhino/javascript/Context",
+                          "jp.sf.amateras.jseditor.rhino/javascript/Context",
                           "toString",
                           "(Ljava/lang/Object;)Ljava/lang/String;");
             cfw.add(ByteCode.ICONST_0);
@@ -848,7 +848,7 @@ public final class JavaAdapter implements IdFunctionCall
 
         } else if (retType.isPrimitive()) {
             cfw.addInvoke(ByteCode.INVOKESTATIC,
-                          "tk.eclipse.plugin.jseditor.rhino/javascript/Context",
+                          "jp.sf.amateras.jseditor.rhino/javascript/Context",
                           "toNumber", "(Ljava/lang/Object;)D");
             String typeName = retType.getName();
             switch (typeName.charAt(0)) {
@@ -884,7 +884,7 @@ public final class JavaAdapter implements IdFunctionCall
                               "(Ljava/lang/String;)Ljava/lang/Class;");
 
                 cfw.addInvoke(ByteCode.INVOKESTATIC,
-                              "tk.eclipse.plugin.jseditor.rhino/javascript/JavaAdapter",
+                              "jp.sf.amateras.jseditor.rhino/javascript/JavaAdapter",
                               "convertResult",
                               "(Ljava/lang/Object;"
                               +"Ljava/lang/Class;"
@@ -911,24 +911,24 @@ public final class JavaAdapter implements IdFunctionCall
         // push factory
         cfw.add(ByteCode.ALOAD_0);
         cfw.add(ByteCode.GETFIELD, genName, "factory",
-                "Ltk.eclipse.plugin.jseditor.rhino/javascript/ContextFactory;");
+                "Ljp.sf.amateras.jseditor.rhino/javascript/ContextFactory;");
 
         // push self
         cfw.add(ByteCode.ALOAD_0);
         cfw.add(ByteCode.GETFIELD, genName, "self",
-                "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
 
         // push function
         cfw.add(ByteCode.ALOAD_0);
         cfw.add(ByteCode.GETFIELD, genName, "delegee",
-                "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;");
+                "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;");
         cfw.addPush(methodName);
         cfw.addInvoke(ByteCode.INVOKESTATIC,
-                      "tk.eclipse.plugin.jseditor.rhino/javascript/JavaAdapter",
+                      "jp.sf.amateras.jseditor.rhino/javascript/JavaAdapter",
                       "getFunction",
-                      "(Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
+                      "(Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
                       +"Ljava/lang/String;"
-                      +")Ltk.eclipse.plugin.jseditor.rhino/javascript/Function;");
+                      +")Ljp.sf.amateras.jseditor.rhino/javascript/Function;");
 
         // push arguments
         generatePushWrappedArgs(cfw, parms, parms.length);
@@ -952,11 +952,11 @@ public final class JavaAdapter implements IdFunctionCall
         // go through utility method, which creates a Context to run the
         // method in.
         cfw.addInvoke(ByteCode.INVOKESTATIC,
-                      "tk.eclipse.plugin.jseditor.rhino/javascript/JavaAdapter",
+                      "jp.sf.amateras.jseditor.rhino/javascript/JavaAdapter",
                       "callMethod",
-                      "(Ltk.eclipse.plugin.jseditor.rhino/javascript/ContextFactory;"
-                      +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;"
-                      +"Ltk.eclipse.plugin.jseditor.rhino/javascript/Function;"
+                      "(Ljp.sf.amateras.jseditor.rhino/javascript/ContextFactory;"
+                      +"Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;"
+                      +"Ljp.sf.amateras.jseditor.rhino/javascript/Function;"
                       +"[Ljava/lang/Object;"
                       +"J"
                       +")Ljava/lang/Object;");

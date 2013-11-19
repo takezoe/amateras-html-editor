@@ -495,7 +495,7 @@ WrapFactory#wrap(Context, Scriptable, Object, Class)}
      * Not intended for public use. Callers should use the
      * public API Context.toType.
      * @deprecated as of 1.5 Release 4
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Context#jsToJava(Object, Class)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Context#jsToJava(Object, Class)
      */
     public static Object coerceType(Class<?> type, Object value)
     {
@@ -984,7 +984,7 @@ WrapFactory#wrap(Context, Scriptable, Object, Class)}
     static {
         // Reflection in java is verbose
         Class<?>[] sig2 = new Class[2];
-        Class<?> cl = Kit.classOrNull("tk.eclipse.plugin.jseditor.rhino.javascript.JavaAdapter");
+        Class<?> cl = Kit.classOrNull("jp.sf.amateras.jseditor.rhino.javascript.JavaAdapter");
         if (cl != null) {
             try {
                 sig2[0] = ScriptRuntime.ObjectClass;

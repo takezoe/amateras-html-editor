@@ -44,7 +44,7 @@ package jp.sf.amateras.jseditor.rhino.javascript;
  * This is interface that all functions in JavaScript must implement.
  * The interface provides for calling functions and constructors.
  *
- * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable
+ * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable
  * @author Norris Boyd
  */
 

@@ -14,7 +14,7 @@ import org.osgi.framework.Bundle;
 /**
  * Provides the classpath variable <code>WEBAPP_LIBS</code>.
  * <p>
- * This variable points tk.eclipse.plugin.htmleditor/lib.
+ * This variable points jp.sf.amateras.htmleditor/lib.
  * This folder has following jar files:
  * <ul>
  *   <li>servlet-api.jar</li>

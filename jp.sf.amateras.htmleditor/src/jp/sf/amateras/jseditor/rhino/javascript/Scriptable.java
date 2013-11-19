@@ -53,7 +53,7 @@ package jp.sf.amateras.jseditor.rhino.javascript;
  * manipulate properties in prototype chains.
  * <p>
  *
- * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject
+ * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject
  * @author Norris Boyd
  * @author Nick Thompson
  * @author Brendan Eich
@@ -103,7 +103,7 @@ public interface Scriptable {
      * <LI>java.lang.Boolean objects</LI>
      * <LI>java.lang.String objects</LI>
      * <LI>java.lang.Number objects</LI>
-     * <LI>tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable objects</LI>
+     * <LI>jp.sf.amateras.jseditor.rhino.javascript.Scriptable objects</LI>
      * <LI>null</LI>
      * <LI>The value returned by Context.getUndefinedValue()</LI>
      * <LI>NOT_FOUND</LI>
@@ -111,7 +111,7 @@ public interface Scriptable {
      * @param name the name of the property
      * @param start the object in which the lookup began
      * @return the value of the property (may be null), or NOT_FOUND
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Context#getUndefinedValue
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Context#getUndefinedValue
      */
     public Object get(String name, Scriptable start);
 
@@ -124,7 +124,7 @@ public interface Scriptable {
      * @param index the numeric index for the property
      * @param start the object in which the lookup began
      * @return the value of the property (may be null), or NOT_FOUND
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#get(String,Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#get(String,Scriptable)
      */
     public Object get(int index, Scriptable start);
 
@@ -139,8 +139,8 @@ public interface Scriptable {
      * @param name the name of the property
      * @param start the object in which the lookup began
      * @return true if and only if the named property is found in the object
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#get(String, Scriptable)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#getProperty(Scriptable, String)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#get(String, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#getProperty(Scriptable, String)
      */
     public boolean has(String name, Scriptable start);
 
@@ -155,8 +155,8 @@ public interface Scriptable {
      * @param index the numeric index for the property
      * @param start the object in which the lookup began
      * @return true if and only if the indexed property is found in the object
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#get(int, Scriptable)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#getProperty(Scriptable, int)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#get(int, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#getProperty(Scriptable, int)
      */
     public boolean has(int index, Scriptable start);
 
@@ -187,7 +187,7 @@ public interface Scriptable {
      * <LI>java.lang.Boolean objects</LI>
      * <LI>java.lang.String objects</LI>
      * <LI>java.lang.Number objects</LI>
-     * <LI>tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable objects</LI>
+     * <LI>jp.sf.amateras.jseditor.rhino.javascript.Scriptable objects</LI>
      * <LI>null</LI>
      * <LI>The value returned by Context.getUndefinedValue()</LI>
      * </UL><p>
@@ -202,10 +202,10 @@ public interface Scriptable {
      * @param name the name of the property
      * @param start the object whose property is being set
      * @param value value to set the property to
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#has(String, Scriptable)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#get(String, Scriptable)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#putProperty(Scriptable, String, Object)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Context#toObject(Object, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#has(String, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#get(String, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#putProperty(Scriptable, String, Object)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Context#toObject(Object, Scriptable)
      */
     public void put(String name, Scriptable start, Object value);
 
@@ -221,10 +221,10 @@ public interface Scriptable {
      * @param index the numeric index for the property
      * @param start the object whose property is being set
      * @param value value to set the property to
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#has(int, Scriptable)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#get(int, Scriptable)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#putProperty(Scriptable, int, Object)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Context#toObject(Object, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#has(int, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#get(int, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#putProperty(Scriptable, int, Object)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Context#toObject(Object, Scriptable)
      */
     public void put(int index, Scriptable start, Object value);
 
@@ -245,8 +245,8 @@ public interface Scriptable {
      * To delete properties defined in a prototype chain,
      * see deleteProperty in ScriptableObject.
      * @param name the identifier for the property
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#get(String, Scriptable)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#deleteProperty(Scriptable, String)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#get(String, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#deleteProperty(Scriptable, String)
      */
     public void delete(String name);
 
@@ -263,8 +263,8 @@ public interface Scriptable {
      * an integral index is used to select the property.
      *
      * @param index the numeric index for the property
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#get(int, Scriptable)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#deleteProperty(Scriptable, int)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#get(int, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#deleteProperty(Scriptable, int)
      */
     public void delete(int index);
 

@@ -297,7 +297,7 @@ public final class OptRuntime extends ScriptRuntime
 
     public static class GeneratorState {
         static final String CLASS_NAME =
-            "tk.eclipse.plugin.jseditor.rhino/javascript/optimizer/OptRuntime$GeneratorState";
+            "jp.sf.amateras.jseditor.rhino/javascript/optimizer/OptRuntime$GeneratorState";
 
         public int resumptionPoint;
         static final String resumptionPoint_NAME = "resumptionPoint";
@@ -306,7 +306,7 @@ public final class OptRuntime extends ScriptRuntime
         public Scriptable thisObj;
         static final String thisObj_NAME = "thisObj";
         static final String thisObj_TYPE =
-            "Ltk.eclipse.plugin.jseditor.rhino/javascript/Scriptable;";
+            "Ljp.sf.amateras.jseditor.rhino/javascript/Scriptable;";
 
         Object[] stackState;
         Object[] localsState;

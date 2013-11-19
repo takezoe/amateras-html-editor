@@ -73,11 +73,11 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
  * The JavaScript editor.
  *
  * @author Naoki Takezoe
- * @see tk.eclipse.plugin.jseditor.editors.JavaScriptOutlinePage
- * @see tk.eclipse.plugin.jseditor.editors.JavaScriptConfiguration
- * @see tk.eclipse.plugin.jseditor.editors.JavaScriptAssistProcessor
- * @see tk.eclipse.plugin.jseditor.editors.JavaScriptCharacterPairMatcher
- * @see tk.eclipse.plugin.jseditor.editors.JavaScriptHyperlinkDetector
+ * @see jp.sf.amateras.jseditor.editors.JavaScriptOutlinePage
+ * @see jp.sf.amateras.jseditor.editors.JavaScriptConfiguration
+ * @see jp.sf.amateras.jseditor.editors.JavaScriptAssistProcessor
+ * @see jp.sf.amateras.jseditor.editors.JavaScriptCharacterPairMatcher
+ * @see jp.sf.amateras.jseditor.editors.JavaScriptHyperlinkDetector
  */
 public class JavaScriptEditor extends TextEditor {
 
@@ -538,21 +538,21 @@ public class JavaScriptEditor extends TextEditor {
 				HTMLProjectParams params = new HTMLProjectParams(input
 						.getFile().getProject());
 				StringBuilder buf = new StringBuilder();
-				buf.append(", {indent_size:Å@");
+				buf.append(", {indent_size:ÔøΩ@");
 				buf.append(params.getJavaScriptIndentSize());
-				buf.append(", indent_char:Å@'");
+				buf.append(", indent_char:ÔøΩ@'");
 				buf.append(params.getJavaScriptIndentChar());
-				buf.append("', preserve_newlines:Å@");
+				buf.append("', preserve_newlines:ÔøΩ@");
 				buf.append(params.isJavaScriptPreserveNewlines());
-				buf.append(", space_after_anon_function:Å@");
+				buf.append(", space_after_anon_function:ÔøΩ@");
 				buf.append(params.isJavaScriptSpaceAfterAnonFunc());
-				buf.append(", brace_style:Å@");
+				buf.append(", brace_style:ÔøΩ@");
 				if (params.isJavaScriptBracesOnOwnLine()) {
 					buf.append("'collapse'");
 				} else {
 					buf.append("'expand'");
 				}
-				buf.append(", indent_level:Å@");
+				buf.append(", indent_level:ÔøΩ@");
 				buf.append(params.getJavaScriptInitIndentLevel());
 				buf.append('}');
 

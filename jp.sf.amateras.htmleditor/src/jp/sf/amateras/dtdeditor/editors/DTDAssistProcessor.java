@@ -199,7 +199,7 @@ public class DTDAssistProcessor extends HTMLAssistProcessor {
 	}
 
 	/* (non-Javadoc)
-	 * @see tk.eclipse.plugin.htmleditor.assist.HTMLAssistProcessor#enableTemplate()
+	 * @see jp.sf.amateras.htmleditor.assist.HTMLAssistProcessor#enableTemplate()
 	 */
 	@Override public boolean enableTemplate() {
 		return false;

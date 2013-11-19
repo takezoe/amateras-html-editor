@@ -48,7 +48,7 @@ package jp.sf.amateras.jseditor.rhino.javascript;
  * It is based on the C source files jsscan.c and jsscan.h
  * in the jsref package.
  *
- * @see tk.eclipse.plugin.jseditor.rhino.javascript.Parser
+ * @see jp.sf.amateras.jseditor.rhino.javascript.Parser
  *
  * @author Mike McCabe
  * @author Brendan Eich

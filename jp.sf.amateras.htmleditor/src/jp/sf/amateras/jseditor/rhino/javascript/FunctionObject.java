@@ -116,7 +116,7 @@ public class FunctionObject extends BaseFunction
      * @param methodOrConstructor a java.lang.reflect.Method or a java.lang.reflect.Constructor
      *                            that defines the object
      * @param scope enclosing scope of function
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable
      */
     public FunctionObject(String name, Member methodOrConstructor,
                           Scriptable scope)
@@ -354,9 +354,9 @@ public class FunctionObject extends BaseFunction
      * @param scope the scope in which to define the constructor (typically
      *              the global object)
      * @param prototype the prototype object
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#setParentScope
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#setPrototype
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#getClassName
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#setParentScope
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#setPrototype
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#getClassName
      */
     public void addAsConstructor(Scriptable scope, Scriptable prototype)
     {
@@ -401,7 +401,7 @@ public class FunctionObject extends BaseFunction
      * <p>
      * Implements Function.call.
      *
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Function#call(
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Function#call(
      *          Context, Scriptable, Scriptable, Object[])
      */
     @Override

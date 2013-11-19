@@ -56,7 +56,7 @@ public class VMBridge_jdk15 extends jp.sf.amateras.jseditor.rhino.javascript.jdk
             Method.class.getMethod("isVarArgs", (Class[]) null);
         } catch (NoSuchMethodException e) {
             // Throw a fitting exception that is handled by
-            // tk.eclipse.plugin.jseditor.rhino.javascript.Kit.newInstanceOrNull:
+            // jp.sf.amateras.jseditor.rhino.javascript.Kit.newInstanceOrNull:
             throw new InstantiationException(e.getMessage());
         }
     }

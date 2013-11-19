@@ -28,7 +28,7 @@ import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
  * IContentOutlinePage implementation for DTDEditor.
  *
  * @author Naoki Takezoe
- * @see tk.eclipse.plugin.dtdeditor.editors.DTDEditor
+ * @see jp.sf.amateras.dtdeditor.editors.DTDEditor
  */
 public class DTDOutlinePage extends ContentOutlinePage implements IHTMLOutlinePage {
 

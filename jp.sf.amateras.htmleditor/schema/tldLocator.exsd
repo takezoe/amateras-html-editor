@@ -52,7 +52,7 @@
                   
                </documentation>
                <appInfo>
-                  <meta.attribute kind="java" basedOn="tk.eclipse.plugin.jspeditor.editors.ITLDLocator"/>
+                  <meta.attribute kind="java" basedOn="jp.sf.amateras.jspeditor.editors.ITLDLocator"/>
                </appInfo>
             </annotation>
          </attribute>

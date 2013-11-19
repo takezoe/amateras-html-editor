@@ -9,7 +9,7 @@ import jp.sf.amateras.htmleditor.editors.HTMLConfiguration;
  * The editor configuration for the <code>XMLEditor</code>.
  * 
  * @author Naoki Takezoe
- * @see tk.eclipse.plugin.xmleditor.editors.XMLAssistProcessor
+ * @see jp.sf.amateras.xmleditor.editors.XMLAssistProcessor
  */
 public class XMLConfiguration extends HTMLConfiguration {
 	

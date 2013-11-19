@@ -27,8 +27,8 @@ public class JavaScriptLaunchUtil {
 		}
 		File dir = HTMLPlugin.getDefault().getStateLocation().toFile();
 		files = new File[]{
-				new File(dir, "lib/js.jar"),
-				new File(dir, "lib/avaScriptExecutor.jar"),
+				new File(dir, "js.jar"),
+				new File(dir, "JavaScriptExecutor.jar"),
 		};
 		return files;
 	}
@@ -46,7 +46,7 @@ public class JavaScriptLaunchUtil {
 		File[] files = getClassPaths();
 		for(int i=0;i<files.length;i++){
 			if(!files[i].exists()){
-				copyFile(HTMLPlugin.getDefault().getBundle().getEntry("/" + files[i].getName()),
+				copyFile(HTMLPlugin.getDefault().getBundle().getEntry("/lib/" + files[i].getName()),
 						files[i]);
 			}
 		}

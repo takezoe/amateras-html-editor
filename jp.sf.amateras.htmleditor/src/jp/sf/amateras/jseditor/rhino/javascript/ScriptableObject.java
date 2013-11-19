@@ -71,7 +71,7 @@ import jp.sf.amateras.jseditor.rhino.javascript.debug.DebuggableObject;
  * <p>
  * Classes extending ScriptableObject must define the getClassName method.
  *
- * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable
+ * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable
  * @author Norris Boyd
  */
 
@@ -85,18 +85,18 @@ public abstract class ScriptableObject implements Scriptable, Serializable,
      *
      * Used by getAttributes() and setAttributes().
      *
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#getAttributes(String)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#setAttributes(String, int)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#getAttributes(String)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#setAttributes(String, int)
      */
     public static final int EMPTY =     0x00;
 
     /**
      * Property attribute indicating assignment to this property is ignored.
      *
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject
      *      #put(String, Scriptable, Object)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#getAttributes(String)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#setAttributes(String, int)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#getAttributes(String)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#setAttributes(String, int)
      */
     public static final int READONLY =  0x01;
 
@@ -105,18 +105,18 @@ public abstract class ScriptableObject implements Scriptable, Serializable,
      *
      * Only enumerated properties will be returned by getIds().
      *
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#getIds()
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#getAttributes(String)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#setAttributes(String, int)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#getIds()
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#getAttributes(String)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#setAttributes(String, int)
      */
     public static final int DONTENUM =  0x02;
 
     /**
      * Property attribute indicating property cannot be deleted.
      *
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#delete(String)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#getAttributes(String)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#setAttributes(String, int)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#delete(String)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#getAttributes(String)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#setAttributes(String, int)
      */
     public static final int PERMANENT = 0x04;
 
@@ -474,11 +474,11 @@ public abstract class ScriptableObject implements Scriptable, Serializable,
      * @param name the identifier for the property
      * @return the bitset of attributes
      * @exception EvaluatorException if the named property is not found
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#has(String, Scriptable)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#READONLY
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#DONTENUM
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#PERMANENT
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#EMPTY
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#has(String, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#READONLY
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#DONTENUM
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#PERMANENT
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#EMPTY
      */
     public int getAttributes(String name)
     {
@@ -492,11 +492,11 @@ public abstract class ScriptableObject implements Scriptable, Serializable,
      * @exception EvaluatorException if the named property is not found
      *            is not found
      * @return the bitset of attributes
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#has(String, Scriptable)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#READONLY
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#DONTENUM
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#PERMANENT
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#EMPTY
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#has(String, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#READONLY
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#DONTENUM
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#PERMANENT
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#EMPTY
      */
     public int getAttributes(int index)
     {
@@ -518,11 +518,11 @@ public abstract class ScriptableObject implements Scriptable, Serializable,
      * @param name the name of the property
      * @param attributes the bitset of attributes
      * @exception EvaluatorException if the named property is not found
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#has(String, Scriptable)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#READONLY
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#DONTENUM
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#PERMANENT
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#EMPTY
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#has(String, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#READONLY
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#DONTENUM
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#PERMANENT
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#EMPTY
      */
     public void setAttributes(String name, int attributes)
     {
@@ -536,11 +536,11 @@ public abstract class ScriptableObject implements Scriptable, Serializable,
      * @param index the numeric index for the property
      * @param attributes the bitset of attributes
      * @exception EvaluatorException if the named property is not found
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#has(String, Scriptable)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#READONLY
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#DONTENUM
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#PERMANENT
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#EMPTY
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#has(String, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#READONLY
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#DONTENUM
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#PERMANENT
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#EMPTY
      */
     public void setAttributes(int index, int attributes)
     {
@@ -927,10 +927,10 @@ public abstract class ScriptableObject implements Scriptable, Serializable,
      *            the named class
      * @exception InvocationTargetException if an exception is thrown
      *            during execution of methods of the named class
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Function
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.FunctionObject
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#READONLY
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Function
+     * @see jp.sf.amateras.jseditor.rhino.javascript.FunctionObject
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#READONLY
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject
      *      #defineProperty(String, Class, int)
      */
     public static <T extends Scriptable> void defineClass(
@@ -1237,7 +1237,7 @@ public abstract class ScriptableObject implements Scriptable, Serializable,
      * @param propertyName the name of the property to define.
      * @param value the initial value of the property
      * @param attributes the attributes of the JavaScript property
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#put(String, Scriptable, Object)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#put(String, Scriptable, Object)
      */
     public void defineProperty(String propertyName, Object value,
                                int attributes)
@@ -1297,7 +1297,7 @@ public abstract class ScriptableObject implements Scriptable, Serializable,
      *                    and "setFoo" methods.
      * @param clazz the Java class to search for the getter and setter
      * @param attributes the attributes of the JavaScript property
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#put(String, Scriptable, Object)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#put(String, Scriptable, Object)
      */
     public void defineProperty(String propertyName, Class<?> clazz,
                                int attributes)
@@ -1467,7 +1467,7 @@ public abstract class ScriptableObject implements Scriptable, Serializable,
      * @param names the names of the Methods to add as function properties
      * @param clazz the class to search for the Methods
      * @param attributes the attributes of the new properties
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.FunctionObject
+     * @see jp.sf.amateras.jseditor.rhino.javascript.FunctionObject
      */
     public void defineFunctionProperties(String[] names, Class<?> clazz,
                                          int attributes)

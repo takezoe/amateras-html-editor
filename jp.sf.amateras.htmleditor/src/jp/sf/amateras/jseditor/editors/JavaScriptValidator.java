@@ -38,7 +38,7 @@ import org.eclipse.jdt.launching.VMRunnerConfiguration;
 /**
  * The validator for JavaScriptEditor.
  * 
- * @see tk.eclipse.plugin.jseditor.editors.JavaScriptEditor
+ * @see jp.sf.amateras.jseditor.editors.JavaScriptEditor
  * @author Naoki Takezoe
  * @author shinsuke
  */

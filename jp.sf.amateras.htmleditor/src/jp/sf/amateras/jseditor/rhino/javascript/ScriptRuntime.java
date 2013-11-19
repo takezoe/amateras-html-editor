@@ -128,30 +128,30 @@ public class ScriptRuntime {
 
     public final static Class<?>
         ContextClass
-            = Kit.classOrNull("tk.eclipse.plugin.jseditor.rhino.javascript.Context"),
+            = Kit.classOrNull("jp.sf.amateras.jseditor.rhino.javascript.Context"),
         ContextFactoryClass
-            = Kit.classOrNull("tk.eclipse.plugin.jseditor.rhino.javascript.ContextFactory"),
+            = Kit.classOrNull("jp.sf.amateras.jseditor.rhino.javascript.ContextFactory"),
         FunctionClass
-            = Kit.classOrNull("tk.eclipse.plugin.jseditor.rhino.javascript.Function"),
+            = Kit.classOrNull("jp.sf.amateras.jseditor.rhino.javascript.Function"),
         ScriptableObjectClass
-            = Kit.classOrNull("tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject");
+            = Kit.classOrNull("jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject");
     public static final Class<Scriptable> ScriptableClass =
         Scriptable.class;
 
 
     private static final String[] lazilyNames = {
-        "RegExp",        "tk.eclipse.plugin.jseditor.rhino.javascript.regexp.NativeRegExp",
-        "Packages",      "tk.eclipse.plugin.jseditor.rhino.javascript.NativeJavaTopPackage",
-        "java",          "tk.eclipse.plugin.jseditor.rhino.javascript.NativeJavaTopPackage",
-        "javax",         "tk.eclipse.plugin.jseditor.rhino.javascript.NativeJavaTopPackage",
-        "org",           "tk.eclipse.plugin.jseditor.rhino.javascript.NativeJavaTopPackage",
-        "com",           "tk.eclipse.plugin.jseditor.rhino.javascript.NativeJavaTopPackage",
-        "edu",           "tk.eclipse.plugin.jseditor.rhino.javascript.NativeJavaTopPackage",
-        "net",           "tk.eclipse.plugin.jseditor.rhino.javascript.NativeJavaTopPackage",
-        "getClass",      "tk.eclipse.plugin.jseditor.rhino.javascript.NativeJavaTopPackage",
-        "JavaAdapter",   "tk.eclipse.plugin.jseditor.rhino.javascript.JavaAdapter",
-        "JavaImporter",  "tk.eclipse.plugin.jseditor.rhino.javascript.ImporterTopLevel",
-        "Continuation",  "tk.eclipse.plugin.jseditor.rhino.javascript.NativeContinuation",
+        "RegExp",        "jp.sf.amateras.jseditor.rhino.javascript.regexp.NativeRegExp",
+        "Packages",      "jp.sf.amateras.jseditor.rhino.javascript.NativeJavaTopPackage",
+        "java",          "jp.sf.amateras.jseditor.rhino.javascript.NativeJavaTopPackage",
+        "javax",         "jp.sf.amateras.jseditor.rhino.javascript.NativeJavaTopPackage",
+        "org",           "jp.sf.amateras.jseditor.rhino.javascript.NativeJavaTopPackage",
+        "com",           "jp.sf.amateras.jseditor.rhino.javascript.NativeJavaTopPackage",
+        "edu",           "jp.sf.amateras.jseditor.rhino.javascript.NativeJavaTopPackage",
+        "net",           "jp.sf.amateras.jseditor.rhino.javascript.NativeJavaTopPackage",
+        "getClass",      "jp.sf.amateras.jseditor.rhino.javascript.NativeJavaTopPackage",
+        "JavaAdapter",   "jp.sf.amateras.jseditor.rhino.javascript.JavaAdapter",
+        "JavaImporter",  "jp.sf.amateras.jseditor.rhino.javascript.ImporterTopLevel",
+        "Continuation",  "jp.sf.amateras.jseditor.rhino.javascript.NativeContinuation",
         //	TODO	Grotesque hack using literal string (xml) just to minimize
 		//			changes for now
         "XML",           "(xml)",
@@ -3020,7 +3020,7 @@ public class ScriptRuntime {
     // ------------------
 
     public static ScriptableObject getGlobal(Context cx) {
-        final String GLOBAL_CLASS = "tk.eclipse.plugin.jseditor.rhino.javascript.tools.shell.Global";
+        final String GLOBAL_CLASS = "jp.sf.amateras.jseditor.rhino.javascript.tools.shell.Global";
         Class<?> globalClass = Kit.classOrNull(GLOBAL_CLASS);
         if (globalClass != null) {
             try {
@@ -3599,7 +3599,7 @@ public class ScriptRuntime {
     private static class DefaultMessageProvider implements MessageProvider {
         public String getMessage(String messageId, Object[] arguments) {
             final String defaultResource
-                = "tk.eclipse.plugin.jseditor.rhino.javascript.resources.Messages";
+                = "jp.sf.amateras.jseditor.rhino.javascript.resources.Messages";
 
             Context cx = Context.getCurrentContext();
             Locale locale = cx != null ? cx.getLocale() : Locale.getDefault();

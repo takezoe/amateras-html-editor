@@ -68,7 +68,7 @@ public interface ConstProperties {
      * <LI>java.lang.Boolean objects</LI>
      * <LI>java.lang.String objects</LI>
      * <LI>java.lang.Number objects</LI>
-     * <LI>tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable objects</LI>
+     * <LI>jp.sf.amateras.jseditor.rhino.javascript.Scriptable objects</LI>
      * <LI>null</LI>
      * <LI>The value returned by Context.getUndefinedValue()</LI>
      * </UL><p>
@@ -83,10 +83,10 @@ public interface ConstProperties {
      * @param name the name of the property
      * @param start the object whose property is being set
      * @param value value to set the property to
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#has(String, Scriptable)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#get(String, Scriptable)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.ScriptableObject#putProperty(Scriptable, String, Object)
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Context#toObject(Object, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#has(String, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#get(String, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.ScriptableObject#putProperty(Scriptable, String, Object)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Context#toObject(Object, Scriptable)
      */
     public void putConst(String name, Scriptable start, Object value);
 

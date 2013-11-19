@@ -50,7 +50,7 @@ package jp.sf.amateras.jseditor.rhino.javascript;
  * will call the methods of this class whenever it needs to wrap a value
  * resulting from a call to a Java method or an access to a Java field.
  *
- * @see tk.eclipse.plugin.jseditor.rhino.javascript.Context#setWrapFactory(WrapFactory)
+ * @see jp.sf.amateras.jseditor.rhino.javascript.Context#setWrapFactory(WrapFactory)
  * @since 1.5 Release 4
  */
 public class WrapFactory
@@ -63,7 +63,7 @@ public class WrapFactory
      * <LI>java.lang.Boolean</LI>
      * <LI>java.lang.String</LI>
      * <LI>java.lang.Number</LI>
-     * <LI>tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable objects</LI>
+     * <LI>jp.sf.amateras.jseditor.rhino.javascript.Scriptable objects</LI>
      * <LI>The value returned by Context.getUndefinedValue()</LI>
      * <LI>null</LI>
      * </UL>

@@ -864,7 +864,7 @@ public class HTMLSourceEditor extends TextEditor {
 		public void run() {
 			IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 			try {
-				window.getActivePage().showView("tk.eclipse.plugin.htmleditor.views.PaletteView");
+				window.getActivePage().showView("jp.sf.amateras.htmleditor.views.PaletteView");
 			} catch(Exception ex){
 				HTMLPlugin.openAlertDialog(ex.toString());
 			}

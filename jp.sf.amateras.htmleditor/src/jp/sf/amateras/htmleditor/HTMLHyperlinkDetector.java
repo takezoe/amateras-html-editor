@@ -40,8 +40,8 @@ import org.eclipse.ui.ide.IDE;
  * additional rules by <code>addHyperlinkProvider()</code>.
  *
  * @author Naoki Takezoe
- * @see tk.eclipse.plugin.htmleditor.editors.HTMLSourceEditor
- * @see tk.eclipse.plugin.htmleditor.IHyperlinkProvider
+ * @see jp.sf.amateras.htmleditor.editors.HTMLSourceEditor
+ * @see jp.sf.amateras.htmleditor.IHyperlinkProvider
  */
 public class HTMLHyperlinkDetector implements IHyperlinkDetector {
 
@@ -258,7 +258,7 @@ public class HTMLHyperlinkDetector implements IHyperlinkDetector {
 				if(openObject instanceof IFile){
 					IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 					IEditorPart editor = IDE.openEditor(window.getActivePage(),(IFile)openObject,
-							"tk.eclipse.plugin.htmleditor.editors.HTMLEditor", true);
+							"jp.sf.amateras.htmleditor.editors.HTMLEditor", true);
 					if(offset >= 0 && editor instanceof HTMLEditor){
 						((HTMLEditor)editor).getPaletteTarget().selectAndReveal(offset, 0);
 					}

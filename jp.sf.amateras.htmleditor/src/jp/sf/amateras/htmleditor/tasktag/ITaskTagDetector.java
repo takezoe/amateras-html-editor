@@ -6,8 +6,8 @@ import org.eclipse.core.resources.IFile;
  * The interface for TaskTag detectors.
  * 
  * @author Naoki Takezoe
- * @see tk.eclipse.plugin.htmleditor.tasktag.TaskTag
- * @see tk.eclipse.plugin.htmleditor.HTMLProjectBuilder
+ * @see jp.sf.amateras.htmleditor.tasktag.TaskTag
+ * @see jp.sf.amateras.htmleditor.HTMLProjectBuilder
  */
 public interface ITaskTagDetector {
 	

@@ -34,7 +34,7 @@ import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 /**
  * ContentOutlinePage implementation for JavaScriptEditor.
  *
- * @see tk.eclipse.plugin.jseditor.editors.JavaScriptEditor
+ * @see jp.sf.amateras.jseditor.editors.JavaScriptEditor
  * @author Naoki Takezoe
  */
 public class JavaScriptOutlinePage extends ContentOutlinePage {

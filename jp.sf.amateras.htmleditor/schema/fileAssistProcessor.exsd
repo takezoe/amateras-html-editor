@@ -52,7 +52,7 @@
                   
                </documentation>
                <appInfo>
-                  <meta.attribute kind="java" basedOn="tk.eclipse.plugin.htmleditor.IFileAssistProcessor"/>
+                  <meta.attribute kind="java" basedOn="jp.sf.amateras.htmleditor.IFileAssistProcessor"/>
                </appInfo>
             </annotation>
          </attribute>

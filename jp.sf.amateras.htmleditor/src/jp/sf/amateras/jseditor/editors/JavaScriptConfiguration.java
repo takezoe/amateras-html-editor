@@ -18,7 +18,7 @@ import org.eclipse.ui.editors.text.TextSourceViewerConfiguration;
 /**
  * SourceViewerConfiguration implementation for JavaScriptEditor.
  *
- * @see tk.eclipse.plugin.jseditor.editors.JavaScriptEditor
+ * @see jp.sf.amateras.jseditor.editors.JavaScriptEditor
  * @author Naoki Takezoe
  */
 public class JavaScriptConfiguration extends TextSourceViewerConfiguration {

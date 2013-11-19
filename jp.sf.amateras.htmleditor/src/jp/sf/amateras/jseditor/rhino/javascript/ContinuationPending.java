@@ -40,12 +40,12 @@ package jp.sf.amateras.jseditor.rhino.javascript;
 
 /**
  * Exception thrown by 
- * {@link tk.eclipse.plugin.jseditor.rhino.javascript.Context#executeScriptWithContinuations(Script, Scriptable)}
- * and {@link tk.eclipse.plugin.jseditor.rhino.javascript.Context#callFunctionWithContinuations(Callable, Scriptable, Object[])}
+ * {@link jp.sf.amateras.jseditor.rhino.javascript.Context#executeScriptWithContinuations(Script, Scriptable)}
+ * and {@link jp.sf.amateras.jseditor.rhino.javascript.Context#callFunctionWithContinuations(Callable, Scriptable, Object[])}
  * when execution encounters a continuation captured by
- * {@link tk.eclipse.plugin.jseditor.rhino.javascript.Context#captureContinuation()}.
+ * {@link jp.sf.amateras.jseditor.rhino.javascript.Context#captureContinuation()}.
  * Exception will contain the captured state needed to restart the continuation
- * with {@link tk.eclipse.plugin.jseditor.rhino.javascript.Context#resumeContinuation(Object, Scriptable, Object)}.
+ * with {@link jp.sf.amateras.jseditor.rhino.javascript.Context#resumeContinuation(Object, Scriptable, Object)}.
  * @author Norris Boyd
  */
 public class ContinuationPending extends RuntimeException {
@@ -56,8 +56,8 @@ public class ContinuationPending extends RuntimeException {
     /**
      * Construct a ContinuationPending exception. Internal call only;
      * users of the API should get continuations created on their behalf by
-     * calling {@link tk.eclipse.plugin.jseditor.rhino.javascript.Context#executeScriptWithContinuations(Script, Scriptable)}
-     * and {@link tk.eclipse.plugin.jseditor.rhino.javascript.Context#callFunctionWithContinuations(Callable, Scriptable, Object[])}
+     * calling {@link jp.sf.amateras.jseditor.rhino.javascript.Context#executeScriptWithContinuations(Script, Scriptable)}
+     * and {@link jp.sf.amateras.jseditor.rhino.javascript.Context#callFunctionWithContinuations(Callable, Scriptable, Object[])}
      * @param continuationState Internal Continuation object
      */
     ContinuationPending(NativeContinuation continuationState) {
@@ -67,7 +67,7 @@ public class ContinuationPending extends RuntimeException {
     /**
      * Get continuation object. The only
      * use for this object is to be passed to 
-     * {@link tk.eclipse.plugin.jseditor.rhino.javascript.Context#resumeContinuation(Object, Scriptable, Object)}.
+     * {@link jp.sf.amateras.jseditor.rhino.javascript.Context#resumeContinuation(Object, Scriptable, Object)}.
      * @return continuation object
      */
     public Object getContinuation() {

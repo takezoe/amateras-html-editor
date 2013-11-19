@@ -44,7 +44,7 @@ package jp.sf.amateras.jseditor.rhino.javascript;
  *
  * See ECMA 10.1.8
  *
- * @see tk.eclipse.plugin.jseditor.rhino.javascript.NativeCall
+ * @see jp.sf.amateras.jseditor.rhino.javascript.NativeCall
  * @author Norris Boyd
  */
 final class Arguments extends IdScriptableObject

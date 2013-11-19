@@ -61,7 +61,7 @@ package jp.sf.amateras.jseditor.rhino.javascript;
  * These three pieces of functionality are encapsulated in the
  * SecurityController class.
  *
- * @see tk.eclipse.plugin.jseditor.rhino.javascript.Context#setSecurityController(SecurityController)
+ * @see jp.sf.amateras.jseditor.rhino.javascript.Context#setSecurityController(SecurityController)
  * @see java.lang.ClassLoader
  * @since 1.5 Release 4
  */

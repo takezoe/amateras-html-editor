@@ -15,8 +15,8 @@ import org.eclipse.core.runtime.CoreException;
  */
 public class HTMLProjectNature implements IProjectNature {
 	
-	public static final String HTML_NATURE_ID = "tk.eclipse.plugin.htmleditor.HTMLProjectNature";
-	public static final String HTML_BUILDER_ID = "tk.eclipse.plugin.htmleditor.HTMLProjectBuilder";
+	public static final String HTML_NATURE_ID = "jp.sf.amateras.htmleditor.HTMLProjectNature";
+	public static final String HTML_BUILDER_ID = "jp.sf.amateras.htmleditor.HTMLProjectBuilder";
 	private IProject project;
 	
 	public void configure() throws CoreException {

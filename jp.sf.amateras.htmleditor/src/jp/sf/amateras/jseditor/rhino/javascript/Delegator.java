@@ -64,7 +64,7 @@ public class Delegator implements Function {
      * This constructor should only be used for creating prototype
      * objects of Delegator.
      *
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Delegator#construct
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Delegator#construct
      */
     public Delegator() {
     }
@@ -74,7 +74,7 @@ public class Delegator implements Function {
      * Scriptable object.
      *
      * @param obj the delegee
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable
      */
     public Delegator(Scriptable obj) {
         this.obj = obj;
@@ -107,91 +107,91 @@ public class Delegator implements Function {
      * Set the delegee.
      *
      * @param obj the delegee
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable
      */
     public void setDelegee(Scriptable obj) {
         this.obj = obj;
     }
     /**
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#getClassName
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#getClassName
      */
     public String getClassName() {
         return obj.getClassName();
     }
     /**
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#get(String, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#get(String, Scriptable)
      */
     public Object get(String name, Scriptable start) {
         return obj.get(name,start);
     }
     /**
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#get(int, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#get(int, Scriptable)
      */
     public Object get(int index, Scriptable start) {
         return obj.get(index,start);
         }
     /**
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#has(String, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#has(String, Scriptable)
      */
     public boolean has(String name, Scriptable start) {
         return obj.has(name,start);
         }
     /**
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#has(int, Scriptable)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#has(int, Scriptable)
      */
     public boolean has(int index, Scriptable start) {
         return obj.has(index,start);
         }
     /**
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#put(String, Scriptable, Object)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#put(String, Scriptable, Object)
      */
     public void put(String name, Scriptable start, Object value) {
         obj.put(name,start,value);
     }
     /**
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#put(int, Scriptable, Object)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#put(int, Scriptable, Object)
      */
     public void put(int index, Scriptable start, Object value) {
         obj.put(index,start,value);
     }
     /**
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#delete(String)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#delete(String)
      */
     public void delete(String name) {
         obj.delete(name);
     }
     /**
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#delete(int)
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#delete(int)
      */
     public void delete(int index) {
         obj.delete(index);
     }
     /**
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#getPrototype
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#getPrototype
      */
     public Scriptable getPrototype() {
         return obj.getPrototype();
     }
     /**
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#setPrototype
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#setPrototype
      */
     public void setPrototype(Scriptable prototype) {
         obj.setPrototype(prototype);
     }
     /**
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#getParentScope
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#getParentScope
      */
     public Scriptable getParentScope() {
         return obj.getParentScope();
     }
     /**
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#setParentScope
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#setParentScope
      */
     public void setParentScope(Scriptable parent) {
         obj.setParentScope(parent);
     }
     /**
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#getIds
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#getIds
      */
     public Object[] getIds() {
         return obj.getIds();
@@ -206,7 +206,7 @@ public class Delegator implements Function {
      * @param hint the type hint
      * @return the default value
      *
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#getDefaultValue
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#getDefaultValue
      */
     public Object getDefaultValue(Class<?> hint) {
         return (hint == null ||
@@ -215,13 +215,13 @@ public class Delegator implements Function {
             this : obj.getDefaultValue(hint);
     }
     /**
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Scriptable#hasInstance
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Scriptable#hasInstance
      */
     public boolean hasInstance(Scriptable instance) {
         return obj.hasInstance(instance);
     }
     /**
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Function#call
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Function#call
      */
     public Object call(Context cx, Scriptable scope, Scriptable thisObj,
                        Object[] args)

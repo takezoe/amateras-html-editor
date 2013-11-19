@@ -58,7 +58,7 @@ package jp.sf.amateras.jseditor.rhino.javascript;
  * scripts running more then 10 seconds and to provide better compatibility
  * with JavaScript code using MSIE-specific features.
  * <pre>
- * import tk.eclipse.plugin.jseditor.rhino.javascript.*;
+ * import jp.sf.amateras.jseditor.rhino.javascript.*;
  *
  * class MyFactory extends ContextFactory
  * {
@@ -307,7 +307,7 @@ public class ContextFactory
 
     /**
      * Provides a default
-     * {@link tk.eclipse.plugin.jseditor.rhino.javascript.xml.XMLLib.Factory XMLLib.Factory}
+     * {@link jp.sf.amateras.jseditor.rhino.javascript.xml.XMLLib.Factory XMLLib.Factory}
      * to be used by the <code>Context</code> instances produced by this
      * factory. See {@link Context#getE4xImplementationFactory} for details.
      *
@@ -327,11 +327,11 @@ public class ContextFactory
 
         if (isDom3Present()) {
             return jp.sf.amateras.jseditor.rhino.javascript.xml.XMLLib.Factory.create(
-                "tk.eclipse.plugin.jseditor.rhino.javascript.xmlimpl.XMLLibImpl"
+                "jp.sf.amateras.jseditor.rhino.javascript.xmlimpl.XMLLibImpl"
             );
         } else if (Kit.classOrNull("org.apache.xmlbeans.XmlCursor") != null) {
             return jp.sf.amateras.jseditor.rhino.javascript.xml.XMLLib.Factory.create(
-                "tk.eclipse.plugin.jseditor.rhino.javascript.xml.impl.xmlbeans.XMLLibImpl"
+                "jp.sf.amateras.jseditor.rhino.javascript.xml.impl.xmlbeans.XMLLibImpl"
             );
         } else {
             return null;

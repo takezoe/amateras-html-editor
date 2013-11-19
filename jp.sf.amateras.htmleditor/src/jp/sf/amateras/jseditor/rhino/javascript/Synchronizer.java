@@ -45,7 +45,7 @@ package jp.sf.amateras.jseditor.rhino.javascript;
  *
  * Synchronized functions are created from ordinary Javascript
  * functions by the <code>Synchronizer</code> constructor, e.g.
- * <code>new Packages.tk.eclipse.plugin.jseditor.rhino.javascript.Synchronizer(fun)</code>.
+ * <code>new Packages.jp.sf.amateras.jseditor.rhino.javascript.Synchronizer(fun)</code>.
  * The resulting object is a function that establishes an exclusive
  * lock on the <code>this</code> object of its invocation.
  *
@@ -53,7 +53,7 @@ package jp.sf.amateras.jseditor.rhino.javascript;
  * synchronized methods: <code>sync(fun)</code> has the same effect as
  * calling the above constructor.
  *
- * @see tk.eclipse.plugin.jseditor.rhino.javascript.Delegator
+ * @see jp.sf.amateras.jseditor.rhino.javascript.Delegator
  * @author Matthias Radestock
  */
 
@@ -69,7 +69,7 @@ public class Synchronizer extends Delegator {
     }
 
     /**
-     * @see tk.eclipse.plugin.jseditor.rhino.javascript.Function#call
+     * @see jp.sf.amateras.jseditor.rhino.javascript.Function#call
      */
     @Override
     public Object call(Context cx, Scriptable scope, Scriptable thisObj,

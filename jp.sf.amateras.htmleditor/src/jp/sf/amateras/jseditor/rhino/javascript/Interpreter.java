@@ -2344,7 +2344,7 @@ public class Interpreter implements Evaluator
     public String getPatchedStack(RhinoException ex,
                                   String nativeStackTrace)
     {
-        String tag = "tk.eclipse.plugin.jseditor.rhino.javascript.Interpreter.interpretLoop";
+        String tag = "jp.sf.amateras.jseditor.rhino.javascript.Interpreter.interpretLoop";
         StringBuffer sb = new StringBuffer(nativeStackTrace.length() + 1000);
         String lineSeparator = SecurityUtilities.getSystemProperty("line.separator");
 

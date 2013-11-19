@@ -3,7 +3,7 @@ package jp.sf.amateras.htmleditor;
 /**
  * An interface to contribute <code>ICustomTagConverter</code> to ths JSP editor.
  * 
- * @see tk.eclipse.plugin.htmleditor.ICustomTagConverter
+ * @see jp.sf.amateras.htmleditor.ICustomTagConverter
  * @author Naoki Takezoe
  */
 public interface ICustomTagValidatorContributer {

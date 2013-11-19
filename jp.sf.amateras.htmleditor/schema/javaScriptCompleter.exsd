@@ -67,7 +67,7 @@
                   
                </documentation>
                <appInfo>
-                  <meta.attribute kind="java" basedOn=":tk.eclipse.plugin.jseditor.editors.additional.IAdditionalJavaScriptCompleter"/>
+                  <meta.attribute kind="java" basedOn=":jp.sf.amateras.jseditor.editors.additional.IAdditionalJavaScriptCompleter"/>
                </appInfo>
             </annotation>
          </attribute>
