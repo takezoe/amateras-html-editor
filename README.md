@@ -93,8 +93,6 @@ See details [here](http://sourceforge.jp/projects/amateras/wiki/AmaterasIDE_2_0_
 - GEF dependency became an optional. If you don't have GEF, Palette view will be unavailable.
 - Fixed JSP editor bugs.
 
-See details [here](https://amateraside.dev.java.net/releases/AmaterasIDE/2.0.4/) about new features.
-
 ### Version 2.0.3 (2006/12/30)
 
 - This version works with only Eclipse 3.2
@@ -108,8 +106,6 @@ See details [here](https://amateraside.dev.java.net/releases/AmaterasIDE/2.0.4/)
 - Code completion in the XML file which doesn't use DTD/XSD
 - New extention-points
 
-See details [here](https://amateraside.dev.java.net/releases/AmaterasIDE/2.0.3/) about new features.
-
 ### Version 2.0.2 (2006/08/20)
 
 - Displays taglib description in the JSP completion.
@@ -121,15 +117,11 @@ See details [here](https://amateraside.dev.java.net/releases/AmaterasIDE/2.0.3/)
 - Generate XSD action in the DTD editor.
 - Supports Eclipse 3.1 & 3.2 (this version can't work with Eclipse 3.0).
 
-See details [here](https://amateraside.dev.java.net/releases/AmaterasIDE/2.0.2/) about new features.
-
 ### Version 2.0.1 (2006/06/18)
 
 - Code completion using custom elements / attributes in HTML/JSP editor
 - Code completion using Templates in HTML/JSP/XML/JavaScript editor
 - Color choose action in the HTML/JSP/CSS editor's context menu
-
-See details [here](https://amateraside.dev.java.net/releases/AmaterasIDE/2.0.1/) about new features.
 
 ### Version 2.0.0 (2006/03/06)
 
